@@ -8,6 +8,7 @@ import {
 import axios from "axios"
 import RestaurantBox from "./RestaurantBox"
 import RestaurantForm from "./RestaurantForm"
+import Restaurant from "./Restaurant"
 
 class App extends Component {
   render() {
@@ -24,6 +25,10 @@ class App extends Component {
             render={() =>
               <h1>This is the Home Page</h1>
             }
+          />
+
+          <Route path="/restaurant/:name"
+            component={Restaurant}
           />
 
           <Route path="/restaurants"

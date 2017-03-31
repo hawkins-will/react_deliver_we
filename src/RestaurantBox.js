@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Restaurant from "./Restaurant";
 import axios from "axios"
+import { Link } from "react-router-dom"
 
 class RestaurantBox extends Component {
   constructor(props) {
@@ -16,12 +17,25 @@ class RestaurantBox extends Component {
   }
 
   render() {
+    let restaurants = this.state.restaurants.map( (restaurant, index) => {
+      let pathname = `/restaurant/${restaurant.name}`
+      return(
+        <li key={index}>
+          (<Link to={{
+            pathname,
+            state: {active: restaurant }
+          }}>
+            {restaurant.name}
+          </Link>)
+        </li>
+      )
+    })
     return(
       <div>
         <h2>Restaurants:</h2>
-        <Restaurant
-          restaurants={this.state.restaurants}
-        />
+          <ol>
+            {restaurants}
+          </ol>
       </div>
     )
   }
