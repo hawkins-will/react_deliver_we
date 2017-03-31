@@ -10,7 +10,7 @@ class Restaurant extends Component {
     }
     this.handleNameChange = this.handleNameChange.bind(this);
     this.updateRestaurant = this.updateRestaurant.bind(this);
-    // this.deleteRestaurant = this.deleteRestaurant.bind(this);
+    this.deleteRestaurant = this.deleteRestaurant.bind(this);
   }
   rawMarkup() {
     let rawMarkup = marked(this.props.children.toString());
@@ -36,6 +36,14 @@ class Restaurant extends Component {
     })
   }
 
+  deleteRestaurant(e) {
+    axios.delete(`http://localhost:3001/api/restaurants/${this.state.restaurant._id}`, { name: name }).then( res => {
+      console.log("Restaurant Deleted");
+    })
+    .catch(err => {
+      console.error(err);
+    })
+  }
 
   render() {
     return(
@@ -45,7 +53,7 @@ class Restaurant extends Component {
           <input type="text" placeholder={ this.state.restaurant.name } value={ this.state.name } onChange={ this.handleNameChange } />
           <input type="submit" value="Post" />
         </form>
-        
+        <button onClick={ this.deleteRestaurant }>Delete</button>
       </div>
     )
   }
