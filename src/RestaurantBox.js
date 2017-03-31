@@ -1,21 +1,26 @@
 import React, { Component } from "react";
 import Restaurant from "./Restaurant";
+import axios from "axios"
 
 class RestaurantBox extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = { restaurants: [] };
   }
+  componentDidMount(){
+    axios.get("http://localhost:3001/api/restaurants").then((response) => {
+      this.setState({
+        restaurants: response.data
+      })
+    })
+  }
+
   render() {
-    let restaurants = [
-      { name: "McDonalds"},
-      { name: "Burger King"}
-    ]
     return(
       <div>
         <h2>Restaurants:</h2>
         <Restaurant
-          restaurantData={restaurants}
+          restaurants={this.state.restaurants}
         />
       </div>
     )
