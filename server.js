@@ -42,7 +42,28 @@ router.route("/restaurants")
       res.send(err);
       res.json({ message: "Restaurant successfully added!" });
     });
- });
+  });
+
+router.route("/restaurants/:restaurant_id")
+  .put(function(req, res) {
+    Restaurant.findById(req.params.restaurant_id, function(err, restaurant) {
+      if (err)
+      res.send(err);
+      (req.body.name) ? restaurant.name = req.body.name : null;
+      restaurant.save(function(err) {
+        if (err)
+        res.send(err);
+        res.json({ message: "Restaurant has been updated" })
+      })
+    })
+  })
+  .delete(function(req, res) {
+    Restaurant.remove({ _id: req.params.restaurant_id }, function(err, restaurant) {
+      if (err)
+      res.send(err)
+      res.json({ message: "Restaurant has been deleted" })
+    })
+  })
 
 app.use("/api", router);
 
