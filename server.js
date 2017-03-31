@@ -1,7 +1,7 @@
 "use strict"
 
 const express = require("express");
-const mongoose = require('mongoose');
+const mongoose = require('./db/connection.js');
 const bodyParser = require('body-parser');
 const Restaurant = require("./model/restaurants");
 
