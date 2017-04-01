@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Restaurant from "./Restaurant";
+import RestaurantForm from "./RestaurantForm"
 import axios from "axios"
 import { Link } from "react-router-dom"
 
@@ -21,12 +21,12 @@ class RestaurantBox extends Component {
       let pathname = `/restaurant/${restaurant.name}`
       return(
         <li key={index}>
-          (<Link to={{
+          <Link to={{
             pathname,
             state: {active: restaurant }
           }}>
             {restaurant.name}
-          </Link>)
+          </Link>
         </li>
       )
     })
@@ -36,6 +36,7 @@ class RestaurantBox extends Component {
           <ol>
             {restaurants}
           </ol>
+          <RestaurantForm />
       </div>
     )
   }

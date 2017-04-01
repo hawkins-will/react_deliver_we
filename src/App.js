@@ -5,10 +5,10 @@ import {
   Link,
   Redirect
 } from "react-router-dom"
-import axios from "axios"
-import RestaurantBox from "./RestaurantBox"
-import RestaurantForm from "./RestaurantForm"
-import Restaurant from "./Restaurant"
+import RestaurantBox from "./Restaurants/RestaurantBox"
+import Restaurant from "./Restaurants/Restaurant"
+import OrderBox from "./Orders/OrderBox"
+import Order from "./Orders/Order"
 
 class App extends Component {
   render() {
@@ -17,8 +17,8 @@ class App extends Component {
         <div>
           <nav>
             <Link to="/">Home</Link>
-            <Link to="/restaurants">Restaurant List</Link>
-            <Link to="/new_restaurants">New Restaurant</Link>
+            <Link to="/orders">Orders</Link>
+            <Link to="/restaurants">Restaurants</Link>
           </nav>
 
           <Route exact path="/"
@@ -27,8 +27,15 @@ class App extends Component {
             }
           />
 
-          <Route path="/restaurant/:name"
-            component={Restaurant}
+          <Route path="/orders"
+            render={() =>
+              <OrderBox
+              />
+            }
+          />
+
+          <Route path="/order/:name"
+            component={Order}
           />
 
           <Route path="/restaurants"
@@ -38,10 +45,8 @@ class App extends Component {
             }
           />
 
-          <Route path="/new_restaurants"
-            render={() =>
-              <RestaurantForm />
-            }
+          <Route path="/restaurant/:name"
+            component={Restaurant}
           />
 
         </div>

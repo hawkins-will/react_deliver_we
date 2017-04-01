@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require('./db/connection.js');
 const bodyParser = require('body-parser');
 const Restaurant = require("./model/restaurants");
+const Order = require("./model/orders");
 
 const app = express();
 const router = express.Router();
@@ -64,6 +65,46 @@ router.route("/restaurants/:restaurant_id")
       res.json({ message: "Restaurant has been deleted" })
     })
   })
+
+  router.route("/orders")
+    .get(function(req, res) {
+      Order.find(function(err, orders) {
+        if (err)
+        res.send(err);
+        res.json(orders)
+      });
+    })
+    .post(function(req, res) {
+      var order = new Order();
+      order.name = req.body.name;
+      order.save(function(err) {
+        if (err)
+        res.send(err);
+        res.json({ message: "Order successfully added!" });
+      });
+    });
+
+  router.route("/orders/:order_id")
+    .put(function(req, res) {
+      Order.findById(req.params.order_id, function(err, order) {
+        if (err)
+        res.send(err);
+        (req.body.name) ? order.name = req.body.name : null;
+        order.save(function(err) {
+          if (err)
+          res.send(err);
+          res.json({ message: "Order has been updated" })
+        })
+      })
+    })
+    .delete(function(req, res) {
+      Order.remove({ _id: req.params.order_id }, function(err, order) {
+        if (err)
+        res.send(err)
+        res.json({ message: "Order has been deleted" })
+      })
+    })
+
 
 app.use("/api", router);
 

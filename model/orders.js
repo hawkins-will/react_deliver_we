@@ -3,8 +3,8 @@
 const mongoose = require("../db/connection.js");
 const Schema = mongoose.Schema;
 
-var RestaurantSchema = new Schema({
+var OrderSchema = new Schema({
   name: String
 });
 
-module.exports = mongoose.model("Restaurant", RestaurantSchema)
+module.exports = mongoose.model("Order", OrderSchema)

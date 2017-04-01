@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class RestaurantForm extends Component {
+class OrderForm extends Component {
   constructor(props) {
     super(props);
     this.state = { name: "" };
@@ -14,9 +14,8 @@ class RestaurantForm extends Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
     let name = this.state.name.trim();
-    axios.post("http://localhost:3001/api/restaurants", { name: name }).then( res => {
+    axios.post("http://localhost:3001/api/orders", { name: name }).then( res => {
       this.setState( {data: res });
     })
     .catch(err => {
@@ -30,11 +29,11 @@ class RestaurantForm extends Component {
   render(){
     return(
       <form onSubmit={ this.handleSubmit }>
-        <input type="text" placeholder="Restaurant Name..." value={ this.state.name } onChange={ this.handleNameChange } />
+        <input type="text" placeholder="Order Name..." value={ this.state.name } onChange={ this.handleNameChange } />
         <input type="submit" value="Post" />
       </form>
     )
   }
 }
 
-export default RestaurantForm;
+export default OrderForm;
