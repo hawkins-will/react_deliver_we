@@ -5,6 +5,7 @@ const mongoose = require('./db/connection.js');
 const bodyParser = require('body-parser');
 const Restaurant = require("./model/restaurants");
 const Order = require("./model/orders");
+const PersonalOrder = require("./model/personalOrders");
 
 const app = express();
 const router = express.Router();
@@ -105,6 +106,45 @@ router.route("/restaurants/:restaurant_id")
       })
     })
 
+    router.route("/personal_orders")
+      .get(function(req, res) {
+        PersonalOrder.find(function(err, personalOrders) {
+          if (err)
+          res.send(err);
+          res.json(personalOrders)
+        });
+      })
+      .post(function(req, res) {
+        var personalOrder = new PersonalOrder();
+        personalOrder.name = req.body.name;
+        personalOrder.orderId = req.body.orderId;
+        personalOrder.save(function(err) {
+          if (err)
+          res.send(err);
+          res.json({ message: "Personal Order successfully added!" });
+        });
+      });
+
+    router.route("/personal_orders/:personal_order_id")
+      .put(function(req, res) {
+        PersonalOrder.findById(req.params.personal_order_id, function(err, personalOrder) {
+          if (err)
+          res.send(err);
+          (req.body.name) ? order.name = req.body.name : null;
+          personalOrder.save(function(err) {
+            if (err)
+            res.send(err);
+            res.json({ message: "Personal Order has been updated" })
+          })
+        })
+      })
+      .delete(function(req, res) {
+        PersonalOrder.remove({ _id: req.params.personal_order_id }, function(err, personalOrder) {
+          if (err)
+          res.send(err)
+          res.json({ message: "Personal Order has been deleted" })
+        })
+      })
 
 app.use("/api", router);
 

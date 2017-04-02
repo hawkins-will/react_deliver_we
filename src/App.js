@@ -9,6 +9,7 @@ import RestaurantBox from "./Restaurants/RestaurantBox"
 import Restaurant from "./Restaurants/Restaurant"
 import OrderBox from "./Orders/OrderBox"
 import Order from "./Orders/Order"
+import PersonalOrder from "./PersonalOrders/PersonalOrder"
 import "./App.css"
 
 class App extends Component {
@@ -65,6 +66,10 @@ class App extends Component {
 
           <Route path="/restaurant/:name"
             component={Restaurant}
+          />
+
+          <Route path="/personal_order/:name"
+            component={PersonalOrder}
           />
 
         </div>

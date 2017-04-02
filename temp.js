@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import marked from "marked";
 import axios from "axios";
 import PersonalOrderForm from "../PersonalOrders/PersonalOrderForm"
-import PersonalOrderBox from "../PersonalOrders/PersonalOrderBox"
 
 class Order extends Component {
   constructor(props){
@@ -17,6 +16,14 @@ class Order extends Component {
   rawMarkup() {
     let rawMarkup = marked(this.props.children.toString());
     return { __html: rawMarkup };
+  }
+
+  componentDidMount(){
+    axios.get("http://localhost:3001/api/personal_orders").then((response) => {
+      this.setState({
+        personalOrders: response.data
+      })
+    })
   }
 
   handleNameChange(e) {
@@ -47,6 +54,13 @@ class Order extends Component {
   }
 
   render() {
+    let personalOrders = this.state.personalOrders.map( (personalOrder, index) => {
+      return(
+        <li key={index}>
+            {personalOrder.name}
+        </li>
+      )
+    })
     return(
       <div>
         <p>Order from {this.state.order.restaurant}</p>
@@ -56,7 +70,7 @@ class Order extends Component {
           <input type="submit" value="Update" />
         </form>
         <button onClick={ this.deleteOrder }>Delete</button>
-        <PersonalOrderBox />
+        <ol>{personalOrders}</ol>
         <PersonalOrderForm
           orderId={this.state.order._id}
         />
