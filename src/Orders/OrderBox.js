@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios"
 import { Link } from "react-router-dom"
-import OrderForm from "./OrderForm"
 
 class OrderBox extends Component {
   constructor(props) {
@@ -25,7 +24,7 @@ class OrderBox extends Component {
             pathname,
             state: {active: order }
           }}>
-            {order.name}
+            Order from {order.restaurant}
           </Link>
         </li>
       )
@@ -36,7 +35,6 @@ class OrderBox extends Component {
           <ol>
             {orders}
           </ol>
-          <OrderForm />
       </div>
     )
   }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import marked from "marked";
 import axios from "axios";
+import OrderForm from "../Orders/OrderForm"
 
 class Restaurant extends Component {
   constructor(props){
@@ -51,9 +52,13 @@ class Restaurant extends Component {
         <p>{this.state.restaurant.name} Page</p>
         <form onSubmit={ this.updateRestaurant }>
           <input type="text" placeholder={ this.state.restaurant.name } value={ this.state.name } onChange={ this.handleNameChange } />
-          <input type="submit" value="Post" />
+          <input type="submit" value="Update" />
         </form>
         <button onClick={ this.deleteRestaurant }>Delete</button>
+
+        <OrderForm
+          restaurant={this.state.restaurant.name}
+        />
       </div>
     )
   }

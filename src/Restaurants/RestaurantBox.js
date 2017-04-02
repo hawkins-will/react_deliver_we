@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import RestaurantForm from "./RestaurantForm"
 import axios from "axios"
 import { Link } from "react-router-dom"
 
@@ -36,7 +35,6 @@ class RestaurantBox extends Component {
           <ol>
             {restaurants}
           </ol>
-          <RestaurantForm />
       </div>
     )
   }

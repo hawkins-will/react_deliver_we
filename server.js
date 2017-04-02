@@ -76,7 +76,7 @@ router.route("/restaurants/:restaurant_id")
     })
     .post(function(req, res) {
       var order = new Order();
-      order.name = req.body.name;
+      order.restaurant = req.body.restaurant;
       order.save(function(err) {
         if (err)
         res.send(err);
@@ -89,7 +89,7 @@ router.route("/restaurants/:restaurant_id")
       Order.findById(req.params.order_id, function(err, order) {
         if (err)
         res.send(err);
-        (req.body.name) ? order.name = req.body.name : null;
+        (req.body.restaurant) ? order.restaurant = req.body.restaurant : null;
         order.save(function(err) {
           if (err)
           res.send(err);

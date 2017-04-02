@@ -9,6 +9,7 @@ import RestaurantBox from "./Restaurants/RestaurantBox"
 import Restaurant from "./Restaurants/Restaurant"
 import OrderBox from "./Orders/OrderBox"
 import Order from "./Orders/Order"
+import "./App.css"
 
 class App extends Component {
   render() {
@@ -16,14 +17,31 @@ class App extends Component {
       <Router>
         <div>
           <nav>
-            <Link to="/">Home</Link>
-            <Link to="/orders">Orders</Link>
-            <Link to="/restaurants">Restaurants</Link>
+            <h1>DeliverWe</h1>
+            <span className="link">
+              <Link to="/">Home</Link>
+            </span>
+
+            <span className="link">
+              <Link to="/orders">Orders</Link>
+            </span>
+
+            <span className="link">
+              <Link to="/restaurants">Restaurants</Link>
+            </span>
           </nav>
 
           <Route exact path="/"
             render={() =>
-              <h1>This is the Home Page</h1>
+              <div>
+                <span className="link">
+                  <Link to="/orders">Orders</Link>
+                </span>
+
+                <span className="link">
+                  <Link to="/restaurants">Restaurants</Link>
+                </span>
+              </div>
             }
           />
 

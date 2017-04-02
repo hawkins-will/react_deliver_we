@@ -48,7 +48,8 @@ class Order extends Component {
   render() {
     return(
       <div>
-        <p>{this.state.order.name} Page</p>
+        <p>Order from {this.state.order.restaurant}</p>
+
         <form onSubmit={ this.updateOrder }>
           <input type="text" placeholder={ this.state.order.name } value={ this.state.name } onChange={ this.handleNameChange } />
           <input type="submit" value="Update" />
