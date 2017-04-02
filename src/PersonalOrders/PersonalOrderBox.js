@@ -18,16 +18,18 @@ class PersonalOrderBox extends Component {
   render() {
     let personalOrders = this.state.personalOrders.map( (personalOrder, index) => {
       let pathname = `/personal_order/${personalOrder._id}`
-      return(
-        <li key={index}>
-          <Link to={{
-            pathname,
-            state: {active: personalOrder }
-          }}>
-            {personalOrder.name}
-          </Link>
-        </li>
-      )
+      if (personalOrder.orderId == this.props.orderId) {
+        return(
+          <li key={index}>
+            <Link to={{
+              pathname,
+              state: {active: personalOrder }
+            }}>
+              {personalOrder.name}
+            </Link>
+          </li>
+        )
+      }
     })
     return(
       <div>

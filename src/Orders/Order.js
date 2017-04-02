@@ -56,7 +56,9 @@ class Order extends Component {
           <input type="submit" value="Update" />
         </form>
         <button onClick={ this.deleteOrder }>Delete</button>
-        <PersonalOrderBox />
+        <PersonalOrderBox
+          orderId={this.state.order._id}
+         />
         <PersonalOrderForm
           orderId={this.state.order._id}
         />
