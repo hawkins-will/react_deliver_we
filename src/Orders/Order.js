@@ -60,7 +60,7 @@ class Order extends Component {
           orderId={this.state.order._id}
          />
         <PersonalOrderForm
-          orderId={this.state.order._id}
+          order={this.state.order}
         />
       </div>
     )

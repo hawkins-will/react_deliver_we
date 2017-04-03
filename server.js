@@ -91,6 +91,7 @@ router.route("/restaurants/:restaurant_id")
         if (err)
         res.send(err);
         (req.body.restaurant) ? order.restaurant = req.body.restaurant : null;
+        (req.body.personalOrders) ? order.personalOrders = req.body.personalOrders : null;
         order.save(function(err) {
           if (err)
           res.send(err);
