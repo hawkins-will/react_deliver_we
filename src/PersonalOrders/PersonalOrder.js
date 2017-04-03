@@ -25,7 +25,23 @@ class PersonalOrder extends Component {
   }
 
   updatePersonalOrder(e) {
-    console.log("Didn't Do Anything");
+    e.preventDefault();
+    let order = this.state.order;
+    let personalId = this.state.personalOrder._id;
+    let newArray = order.personalOrders.filter((personalOrder) => {
+      return personalOrder._id !== personalId
+    })
+    let selectedPersonalOrder = order.personalOrders.filter((personalOrder) => {
+      return personalOrder._id == personalId
+    })
+    selectedPersonalOrder[0].name = this.state.name
+    newArray.unshift(selectedPersonalOrder[0])
+    axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newArray }).then( res => {
+      console.log("Personal Order Update");
+    })
+    .catch(err => {
+      console.error(err);
+    })
   }
 
   deletePersonalOrder(e) {
