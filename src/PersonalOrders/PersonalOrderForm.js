@@ -20,9 +20,7 @@ class PersonalOrderForm extends Component {
     let order = this.props.order;
     let name = this.state.name.trim();
     order.personalOrders.push( {name: name })
-    console.log(order.personalOrders)
     let personalOrders = order.personalOrders
-    console.log(personalOrders);
     axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: personalOrders }).then( res => {
       this.setState( {data: res });
     })
@@ -30,7 +28,6 @@ class PersonalOrderForm extends Component {
       console.log(err)
     })
     .then(() => {
-      console.log("Saved");
       console.log(order._id);
       this.setState({ name: "" })
     })
@@ -44,7 +41,6 @@ class PersonalOrderForm extends Component {
           <input type="text" placeholder="Name..." value={ this.state.name } onChange={ this.handleNameChange } />
           <input type="submit" value="Join Order" />
         </form>
-        <p>{order.restaurant}</p>
       </div>
     )
   }

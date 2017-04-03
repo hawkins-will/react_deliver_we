@@ -5,18 +5,13 @@ import { Link } from "react-router-dom"
 class PersonalOrderBox extends Component {
   constructor(props) {
     super(props);
+    let order = this.props.order;
     this.state = { personalOrders: [] };
-  }
-  componentDidMount(){
-    axios.get("http://localhost:3001/api/personal_orders").then((response) => {
-      this.setState({
-        personalOrders: response.data
-      })
-    })
   }
 
   render() {
-    let personalOrders = this.state.personalOrders.map( (personalOrder, index) => {
+    let order = this.props.order;
+    let personalOrders = this.props.order.personalOrders.map( (personalOrder, index) => {
       let pathname = `/personal_order/${personalOrder._id}`
         return(
           <li key={index}>

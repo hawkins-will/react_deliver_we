@@ -57,7 +57,7 @@ class Order extends Component {
         </form>
         <button onClick={ this.deleteOrder }>Delete</button>
         <PersonalOrderBox
-          orderId={this.state.order._id}
+          order={this.state.order}
          />
         <PersonalOrderForm
           order={this.state.order}
