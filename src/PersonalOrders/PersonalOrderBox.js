@@ -18,7 +18,6 @@ class PersonalOrderBox extends Component {
   render() {
     let personalOrders = this.state.personalOrders.map( (personalOrder, index) => {
       let pathname = `/personal_order/${personalOrder._id}`
-      if (personalOrder.orderId == this.props.orderId) {
         return(
           <li key={index}>
             <Link to={{
@@ -29,7 +28,6 @@ class PersonalOrderBox extends Component {
             </Link>
           </li>
         )
-      }
     })
     return(
       <div>

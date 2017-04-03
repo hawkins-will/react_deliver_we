@@ -5,11 +5,11 @@ import {
   Link,
   Redirect
 } from "react-router-dom"
-import RestaurantBox from "./Restaurants/RestaurantBox"
-import Restaurant from "./Restaurants/Restaurant"
-import OrderBox from "./Orders/OrderBox"
-import Order from "./Orders/Order"
-import PersonalOrder from "./PersonalOrders/PersonalOrder"
+import RestaurantBox from "../Restaurants/RestaurantBox"
+import Restaurant from "../Restaurants/Restaurant"
+import OrderBox from "../Orders/OrderBox"
+import Order from "../Orders/Order"
+import PersonalOrder from "../PersonalOrders/PersonalOrder"
 import "./App.css"
 
 class App extends Component {
