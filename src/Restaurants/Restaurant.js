@@ -8,6 +8,7 @@ class Restaurant extends Component {
     super(props)
     this.state = {
       restaurant: this.props.location.state.active,
+      name: ""
     }
     this.handleNameChange = this.handleNameChange.bind(this);
     this.updateRestaurant = this.updateRestaurant.bind(this);
@@ -28,6 +29,7 @@ class Restaurant extends Component {
     let name = this.state.name.trim();
     axios.put(`http://localhost:3001/api/restaurants/${this.state.restaurant._id}`, { name: name }).then( res => {
       this.setState( {data: res });
+      console.log(name);
     })
     .catch(err => {
       console.log(err)
@@ -51,7 +53,7 @@ class Restaurant extends Component {
       <div>
         <p>{this.state.restaurant.name} Page</p>
         <form onSubmit={ this.updateRestaurant }>
-          <input type="text" placeholder={ this.state.restaurant.name } value={ this.state.name } onChange={ this.handleNameChange } />
+          <input type="text" placeholder={ this.state.restaurant.name } onChange={ this.handleNameChange } />
           <input type="submit" value="Update" />
         </form>
         <button onClick={ this.deleteRestaurant }>Delete</button>

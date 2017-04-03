@@ -63,7 +63,7 @@ class PersonalOrder extends Component {
       <div>
         <p>{this.state.personalOrder.name} Page</p>
         <form onSubmit={ this.updatePersonalOrder }>
-          <input type="text" placeholder={ this.state.personalOrder.name } value={ this.state.name } onChange={ this.handleNameChange } />
+          <input type="text" placeholder={ this.state.personalOrder.name } onChange={ this.handleNameChange } />
           <input type="submit" value="Update" />
         </form>
         <button onClick={ this.deletePersonalOrder }>Delete</button>
