@@ -17,7 +17,10 @@ class PersonalOrderBox extends Component {
           <li key={index}>
             <Link to={{
               pathname,
-              state: {active: personalOrder }
+              state: {
+                active: personalOrder,
+                order: this.props.order
+               }
             }}>
               {personalOrder.name}
             </Link>

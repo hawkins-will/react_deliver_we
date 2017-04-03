@@ -7,6 +7,8 @@ class PersonalOrder extends Component {
     super(props)
     this.state = {
       personalOrder: this.props.location.state.active,
+      order: this.props.location.state.order,
+      name: ""
     }
     this.handleNameChange = this.handleNameChange.bind(this);
     this.updatePersonalOrder = this.updatePersonalOrder.bind(this);
@@ -23,21 +25,16 @@ class PersonalOrder extends Component {
   }
 
   updatePersonalOrder(e) {
-    e.preventDefault();
-    let name = this.state.name.trim();
-    axios.put(`http://localhost:3001/api/personal_orders/${this.state.personalOrder._id}`, { name: name }).then( res => {
-      this.setState( {data: res });
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    .then(() => {
-      this.setState({ name: "" })
-    })
+    console.log("Didn't Do Anything");
   }
 
   deletePersonalOrder(e) {
-    axios.delete(`http://localhost:3001/api/personal_orders/${this.state.personalOrder._id}`, { name: name }).then( res => {
+    let order = this.state.order;
+    let personalId = this.state.personalOrder._id;
+    let newArray = order.personalOrders.filter((personalOrder) => {
+      return personalOrder._id !== personalId
+    })
+    axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newArray }).then( res => {
       console.log("Personal Order Deleted");
     })
     .catch(err => {
@@ -48,7 +45,6 @@ class PersonalOrder extends Component {
   render() {
     return(
       <div>
-        <p>Hi</p>
         <p>{this.state.personalOrder.name} Page</p>
         <form onSubmit={ this.updatePersonalOrder }>
           <input type="text" placeholder={ this.state.personalOrder.name } value={ this.state.name } onChange={ this.handleNameChange } />
