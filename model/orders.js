@@ -3,8 +3,15 @@
 const mongoose = require("../db/connection.js");
 const Schema = mongoose.Schema;
 
+var ItemSchema = new Schema({
+  name: String,
+  price: Number,
+  description: String
+});
+
 var PersonalOrderSchema = new Schema({
-    name: String
+  name: String,
+  items: [ItemSchema]
 });
 
 var OrderSchema = new Schema({

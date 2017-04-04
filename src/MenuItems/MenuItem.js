@@ -17,7 +17,6 @@ class MenuItem extends Component {
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.updateMenuItem = this.updateMenuItem.bind(this);
     this.deleteMenuItem = this.deleteMenuItem.bind(this);
-    console.log(this.props);
   }
   rawMarkup() {
     let rawMarkup = marked(this.props.children.toString());

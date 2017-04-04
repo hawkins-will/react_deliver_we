@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios"
 import { Link } from "react-router-dom"
 
-class MenuItemBox extends Component {
+class MenuItemBoxPersonal extends Component {
   constructor(props) {
     super(props);
     let restaurant = this.props.restaurant;
@@ -39,4 +39,4 @@ class MenuItemBox extends Component {
   }
 }
 
-export default MenuItemBox;
+export default MenuItemBoxPersonal;

@@ -11,6 +11,7 @@ import OrderBox from "../Orders/OrderBox"
 import Order from "../Orders/Order"
 import PersonalOrder from "../PersonalOrders/PersonalOrder"
 import MenuItem from "../MenuItems/MenuItem"
+import Item from "../Items/Item"
 import "./App.css"
 
 class App extends Component {
@@ -75,6 +76,10 @@ class App extends Component {
 
           <Route path="/menu_item/:name"
             component={MenuItem}
+          />
+
+          <Route path="/item/:name"
+            component={Item}
           />
 
         </div>
