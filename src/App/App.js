@@ -10,6 +10,7 @@ import Restaurant from "../Restaurants/Restaurant"
 import OrderBox from "../Orders/OrderBox"
 import Order from "../Orders/Order"
 import PersonalOrder from "../PersonalOrders/PersonalOrder"
+import MenuItem from "../MenuItems/MenuItem"
 import "./App.css"
 
 class App extends Component {
@@ -70,6 +71,10 @@ class App extends Component {
 
           <Route path="/personal_order/:name"
             component={PersonalOrder}
+          />
+
+          <Route path="/menu_item/:name"
+            component={MenuItem}
           />
 
         </div>

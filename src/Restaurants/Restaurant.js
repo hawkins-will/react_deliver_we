@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import marked from "marked";
 import axios from "axios";
 import OrderForm from "../Orders/OrderForm"
+import MenuItemBox from "../MenuItems/MenuItemBox"
+import MenuItemForm from "../MenuItems/MenuItemForm"
+
 
 class Restaurant extends Component {
   constructor(props){
@@ -29,7 +32,6 @@ class Restaurant extends Component {
     let name = this.state.name.trim();
     axios.put(`http://localhost:3001/api/restaurants/${this.state.restaurant._id}`, { name: name }).then( res => {
       this.setState( {data: res });
-      console.log(name);
     })
     .catch(err => {
       console.log(err)
@@ -59,8 +61,17 @@ class Restaurant extends Component {
         <button onClick={ this.deleteRestaurant }>Delete</button>
 
         <OrderForm
-          restaurant={this.state.restaurant.name}
+          restaurant={this.state.restaurant._id}
         />
+
+        <MenuItemBox
+          restaurant={this.state.restaurant}
+        />
+
+        <MenuItemForm
+          restaurant={this.state.restaurant}
+        />
+
       </div>
     )
   }

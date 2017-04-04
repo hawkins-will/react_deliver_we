@@ -28,7 +28,6 @@ class PersonalOrderForm extends Component {
       console.log(err)
     })
     .then(() => {
-      console.log(order._id);
       this.setState({ name: "" })
     })
   }

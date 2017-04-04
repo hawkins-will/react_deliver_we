@@ -8,9 +8,10 @@ class Order extends Component {
   constructor(props){
     super(props)
     this.state = {
-      order: this.props.location.state.active
+      order: this.props.location.state.active,
+      restaurant: ""
     }
-    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleRestaurantChange = this.handleRestaurantChange.bind(this);
     this.updateOrder = this.updateOrder.bind(this);
     this.deleteOrder = this.deleteOrder.bind(this);
   }
@@ -19,26 +20,27 @@ class Order extends Component {
     return { __html: rawMarkup };
   }
 
-  handleNameChange(e) {
-    this.setState( { name: e.target.value });
+  handleRestaurantChange(e) {
+    this.setState( { restaurant: e.target.value });
   }
 
   updateOrder(e) {
     e.preventDefault();
-    let name = this.state.name.trim();
-    axios.put(`http://localhost:3001/api/orders/${this.state.order._id}`, { name: name }).then( res => {
+    let restaurant = this.state.restaurant.trim();
+    axios.put(`http://localhost:3001/api/orders/${this.state.order._id}`, { restaurant: restaurant }).then( res => {
       this.setState( {data: res });
     })
     .catch(err => {
       console.log(err)
     })
     .then(() => {
-      this.setState({ name: "" })
+      this.setState({ restaurant: "" })
     })
   }
 
   deleteOrder(e) {
-    axios.delete(`http://localhost:3001/api/orders/${this.state.order._id}`, { name: name }).then( res => {
+    let restaurant = this.state.restaurant.trim();
+    axios.delete(`http://localhost:3001/api/orders/${this.state.order._id}`, { restaurant: restaurant }).then( res => {
       console.log("Order Deleted");
     })
     .catch(err => {
@@ -52,7 +54,7 @@ class Order extends Component {
         <p>Order from {this.state.order.restaurant}</p>
 
         <form onSubmit={ this.updateOrder }>
-          <input type="text" placeholder={ this.state.order.name } value={ this.state.name } onChange={ this.handleNameChange } />
+          <input type="text" placeholder={ this.state.order.restaurant } onChange={ this.handleRestaurantChange } />
           <input type="submit" value="Update" />
         </form>
         <button onClick={ this.deleteOrder }>Delete</button>

@@ -47,11 +47,19 @@ router.route("/restaurants")
   });
 
 router.route("/restaurants/:restaurant_id")
+  .get(function(req, res) {
+    Restaurant.findById(req.params.restaurant_id, function(err, restaurant) {
+      if (err)
+      res.send(err);
+      res.json(restaurant)
+    });
+  })
   .put(function(req, res) {
     Restaurant.findById(req.params.restaurant_id, function(err, restaurant) {
       if (err)
       res.send(err);
       (req.body.name) ? restaurant.name = req.body.name : null;
+      (req.body.menuItems) ? restaurant.menuItems = req.body.menuItems : null;
       restaurant.save(function(err) {
         if (err)
         res.send(err);
@@ -78,6 +86,7 @@ router.route("/restaurants/:restaurant_id")
     .post(function(req, res) {
       var order = new Order();
       order.restaurant = req.body.restaurant;
+      order.restaurantId = req.body.restaurantId;
       order.save(function(err) {
         if (err)
         res.send(err);

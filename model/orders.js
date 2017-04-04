@@ -9,6 +9,7 @@ var PersonalOrderSchema = new Schema({
 
 var OrderSchema = new Schema({
   restaurant: String,
+  restaurantId: String,
   personalOrders: [PersonalOrderSchema]
 });
 

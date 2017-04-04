@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import marked from "marked";
 import axios from "axios";
+import MenuItemBox from "../MenuItems/MenuItemBox"
 
 class PersonalOrder extends Component {
   constructor(props){
@@ -8,7 +9,8 @@ class PersonalOrder extends Component {
     this.state = {
       personalOrder: this.props.location.state.active,
       order: this.props.location.state.order,
-      name: ""
+      name: "",
+      restaurant: undefined
     }
     this.handleNameChange = this.handleNameChange.bind(this);
     this.updatePersonalOrder = this.updatePersonalOrder.bind(this);
@@ -19,6 +21,13 @@ class PersonalOrder extends Component {
     return { __html: rawMarkup };
   }
 
+  componentWillMount(){
+    axios.get("http://localhost:3001/api/restaurants/" + this.props.location.state.order.restaurantId).then((response) => {
+      this.setState({
+        restaurant: response.data
+      })
+    })
+  }
 
   handleNameChange(e) {
     this.setState( { name: e.target.value });
@@ -59,16 +68,30 @@ class PersonalOrder extends Component {
   }
 
   render() {
-    return(
-      <div>
-        <p>{this.state.personalOrder.name} Page</p>
-        <form onSubmit={ this.updatePersonalOrder }>
-          <input type="text" placeholder={ this.state.personalOrder.name } onChange={ this.handleNameChange } />
-          <input type="submit" value="Update" />
-        </form>
-        <button onClick={ this.deletePersonalOrder }>Delete</button>
-      </div>
-    )
+    if (this.state.restaurant == undefined) {
+      console.log("Not Yet Loaded");
+      return(
+        <div>Loading Data</div>
+      )
+    } else {
+      return(
+        <div>
+          <p>{this.state.personalOrder.name} Page</p>
+          <form onSubmit={ this.updatePersonalOrder }>
+            <input type="text" placeholder={ this.state.personalOrder.name } onChange={ this.handleNameChange } />
+            <input type="submit" value="Update" />
+          </form>
+          <button onClick={ this.deletePersonalOrder }>Delete</button>
+
+
+          <p>{this.state.restaurant.name}</p>
+
+          <MenuItemBox
+            restaurant={this.state.restaurant}
+          />
+        </div>
+      )
+    }
   }
 }
 
