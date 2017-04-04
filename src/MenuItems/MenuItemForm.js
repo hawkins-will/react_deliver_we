@@ -47,7 +47,6 @@ class MenuItemForm extends Component {
   }
 
   render(){
-    let restaurant = this.props.restaurant;
     return(
       <div>
         <form onSubmit={ this.handleSubmit }>

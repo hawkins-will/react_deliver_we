@@ -42,7 +42,7 @@ class PersonalOrder extends Component {
       return personalOrder._id !== personalId
     })
     let selectedPersonalOrder = order.personalOrders.filter((personalOrder) => {
-      return personalOrder._id == personalId
+      return personalOrder._id === personalId
     })
     selectedPersonalOrder[0].name = this.state.name
     newArray.unshift(selectedPersonalOrder[0])
@@ -69,7 +69,7 @@ class PersonalOrder extends Component {
   }
 
   render() {
-    if (this.state.restaurant == undefined) {
+    if (this.state.restaurant === undefined) {
       console.log("Not Yet Loaded");
       return(
         <div>Loading Data</div>

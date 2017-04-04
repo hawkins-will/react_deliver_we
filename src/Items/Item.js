@@ -46,7 +46,7 @@ class Item extends Component {
       return item._id !== itemId
     })
     let selectedItem = personalOrder.items.filter((item) => {
-      return item._id == itemId
+      return item._id === itemId
     })
     selectedItem[0].name = this.state.name
     selectedItem[0].price = this.state.price

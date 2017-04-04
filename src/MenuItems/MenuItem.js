@@ -44,7 +44,7 @@ class MenuItem extends Component {
       return menuItem._id !== menuItemId
     })
     let selectedMenuItem = restaurant.menuItems.filter((menuItem) => {
-      return menuItem._id == menuItemId
+      return menuItem._id === menuItemId
     })
     selectedMenuItem[0].name = this.state.name
     selectedMenuItem[0].price = this.state.price

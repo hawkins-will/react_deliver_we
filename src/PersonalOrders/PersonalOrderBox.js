@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-import axios from "axios"
+// import axios from "axios"
 import { Link } from "react-router-dom"
 
 class PersonalOrderBox extends Component {
   constructor(props) {
     super(props);
-    let order = this.props.order;
     this.state = { personalOrders: [] };
   }
 
   render() {
-    let order = this.props.order;
     let personalOrders = this.props.order.personalOrders.map( (personalOrder, index) => {
       let pathname = `/personal_order/${personalOrder._id}`
         return(

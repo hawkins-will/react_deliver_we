@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Redirect
+  // Redirect
 } from "react-router-dom"
 import RestaurantBox from "../Restaurants/RestaurantBox"
 import Restaurant from "../Restaurants/Restaurant"

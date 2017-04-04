@@ -33,7 +33,6 @@ class PersonalOrderForm extends Component {
   }
 
   render(){
-    let order = this.props.order;
     return(
       <div>
         <form onSubmit={ this.handleSubmit }>
