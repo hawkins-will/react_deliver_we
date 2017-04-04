@@ -3,7 +3,6 @@ import marked from "marked";
 import axios from "axios";
 import MenuItemBoxPersonal from "../MenuItems/MenuItemBoxPersonal";
 import ItemBox from "../Items/ItemBox";
-import ItemForm from "../Items/ItemForm";
 
 class PersonalOrder extends Component {
   constructor(props){
@@ -89,12 +88,8 @@ class PersonalOrder extends Component {
             order={this.state.order} personalOrder={this.state.personalOrder}
           />
 
-          <ItemForm
-            order={this.state.order} personalOrder={this.state.personalOrder}
-          />
-
           <MenuItemBoxPersonal
-            restaurant={this.state.restaurant}
+            restaurant={this.state.restaurant} order={this.state.order} personalOrder={this.state.personalOrder}
           />
         </div>
       )

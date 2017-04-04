@@ -6,7 +6,13 @@ class MenuItemBoxPersonal extends Component {
   constructor(props) {
     super(props);
     let restaurant = this.props.restaurant;
-    this.state = { restaurant: restaurant };
+    let order = this.props.order;
+    let personalOrder = this.props.personalOrder;
+    this.state = {
+      restaurant: restaurant,
+      order: order,
+      personalOrder: personalOrder
+    }
   }
 
   render() {
@@ -15,16 +21,26 @@ class MenuItemBoxPersonal extends Component {
       let pathname = `/menu_item/${menuItem._id}`
         return(
           <li key={index}>
-          ${menuItem.price}
-            <Link to={{
-              pathname,
-              state: {
-                active: menuItem,
-                restaurant: this.props.restaurant
-               }
-            }}>
-              {menuItem.name}
-            </Link>
+          ${menuItem.price} {menuItem.name}
+          <button onClick={() => {
+            let order = this.props.order;
+            let personalOrder = this.props.personalOrder;
+            let personalId = this.props.personalOrder._id;
+            let newArray = order.personalOrders.filter((personalOrder) => {
+              return personalOrder._id !== personalId
+            })
+            let name = menuItem.name
+            let price = menuItem.price
+            let description = menuItem.description
+            personalOrder.items.push( {name: name, price: price, description: description })
+            newArray.unshift(personalOrder);
+            axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newArray }).then( res => {
+              this.setState( {data: res });
+            })
+            .catch(err => {
+              console.log(err)
+            })
+          }}>+</button>
           </li>
         )
     })
