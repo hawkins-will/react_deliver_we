@@ -8,30 +8,30 @@ class Bill extends Component {
   }
 
   render() {
-    let total = 0.00
+    let total = 0
 
     let personalOrders = this.props.order.personalOrders.map( (personalOrder, index) => {
-      console.log(personalOrder.items);
+      let personalTotal = 0
       let items = personalOrder.items.map( (item, index) => {
+        personalTotal = personalTotal + item.price
         return(
-          <li>
             <p>${item.price.toFixed(2)} {item.name}</p>
-          </li>
         )
       })
+      total = total + personalTotal
       return(
         <div>
           <h4>{personalOrder.name}</h4>
           <ul>{items}</ul>
+          <p>Personal Total: ${personalTotal.toFixed(2)}</p>
         </div>
       )
     })
     return(
       <div>
         <h2>Bill:</h2>
-          <p>
-            {personalOrders}
-          </p>
+        {personalOrders}
+        <p>Total: ${total.toFixed(2)}</p>
       </div>
     )
   }
