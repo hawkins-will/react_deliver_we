@@ -44,7 +44,9 @@ class PersonalOrder extends Component {
     let selectedPersonalOrder = order.personalOrders.filter((personalOrder) => {
       return personalOrder._id === personalId
     })
-    selectedPersonalOrder[0].name = this.state.name
+    if (this.state.name){
+      selectedPersonalOrder[0].name = this.state.name
+    }
     newArray.unshift(selectedPersonalOrder[0])
     axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newArray }).then( res => {
       console.log("Personal Order Update");

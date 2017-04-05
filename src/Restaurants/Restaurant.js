@@ -29,7 +29,9 @@ class Restaurant extends Component {
 
   updateRestaurant(e) {
     e.preventDefault();
-    let name = this.state.name.trim();
+    if (this.state.name) {
+      let name = this.state.name.trim();
+    }
     axios.put(`http://localhost:3001/api/restaurants/${this.state.restaurant._id}`, { name: name }).then( res => {
       this.setState( {data: res });
     })

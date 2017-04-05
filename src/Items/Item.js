@@ -48,9 +48,15 @@ class Item extends Component {
     let selectedItem = personalOrder.items.filter((item) => {
       return item._id === itemId
     })
-    selectedItem[0].name = this.state.name
-    selectedItem[0].price = this.state.price
-    selectedItem[0].description = this.state.description
+    if (this.state.name){
+      selectedItem[0].name = this.state.name
+    }
+    if (this.state.price){
+      selectedItem[0].price = this.state.price
+    }
+    if (this.state.description){
+      selectedItem[0].description = this.state.description
+    }
     newArray.unshift(selectedItem[0])
     personalOrder.items = newArray;
     let personalId = personalOrder._id;

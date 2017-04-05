@@ -46,9 +46,15 @@ class MenuItem extends Component {
     let selectedMenuItem = restaurant.menuItems.filter((menuItem) => {
       return menuItem._id === menuItemId
     })
-    selectedMenuItem[0].name = this.state.name
-    selectedMenuItem[0].price = this.state.price
-    selectedMenuItem[0].description = this.state.description
+    if (this.state.name){
+      selectedMenuItem[0].name = this.state.name
+    }
+    if (this.state.price){
+      selectedMenuItem[0].price = this.state.price
+    }
+    if (this.state.description){
+      selectedMenuItem[0].description = this.state.description
+    }
     newArray.unshift(selectedMenuItem[0])
     axios.put(`http://localhost:3001/api/restaurants/${restaurant._id}`, { menuItems: newArray }).then( res => {
       console.log("Menu Item Updated");
