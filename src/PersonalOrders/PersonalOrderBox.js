@@ -10,7 +10,7 @@ class PersonalOrderBox extends Component {
 
   render() {
     let personalOrders = this.props.order.personalOrders.map( (personalOrder, index) => {
-      let pathname = `/personal_order/${personalOrder._id}`
+      let pathname = `/personal_order/${personalOrder.name}`
         return(
           <li key={index}>
             <Link to={{

@@ -55,7 +55,7 @@ class App extends Component {
             }
           />
 
-          <Route path="/order/:name"
+          <Route path="/order/:restaurant"
             component={Order}
           />
 

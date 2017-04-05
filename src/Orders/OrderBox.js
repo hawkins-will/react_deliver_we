@@ -17,7 +17,7 @@ class OrderBox extends Component {
 
   render() {
     let orders = this.state.orders.map( (order, index) => {
-      let pathname = `/order/${order.name}`
+      let pathname = `/order/${order.restaurant}`
       return(
         <li key={index}>
           <Link to={{

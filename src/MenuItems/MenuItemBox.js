@@ -12,7 +12,7 @@ class MenuItemBox extends Component {
   render() {
     let restaurant = this.props.restaurant;
     let menuItems = this.props.restaurant.menuItems.map( (menuItem, index) => {
-      let pathname = `/menu_item/${menuItem._id}`
+      let pathname = `/menu_item/${menuItem.name}`
         return(
           <li key={index}>
             ${menuItem.price.toFixed(2)}

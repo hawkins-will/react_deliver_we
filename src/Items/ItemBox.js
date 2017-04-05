@@ -11,7 +11,7 @@ class ItemBox extends Component {
   render() {
     let total = 0.00
     let items = this.props.personalOrder.items.map( (item, index) => {
-      let pathname = `/item/${item._id}`
+      let pathname = `/item/${item.name}`
       total = total + item.price
         return(
           <li key={index}>
