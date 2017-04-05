@@ -3,6 +3,7 @@ import marked from "marked";
 import axios from "axios";
 import PersonalOrderForm from "../PersonalOrders/PersonalOrderForm"
 import PersonalOrderBox from "../PersonalOrders/PersonalOrderBox"
+import Bill from "../Bills/Bill"
 
 class Order extends Component {
   constructor(props){
@@ -61,6 +62,11 @@ class Order extends Component {
         <PersonalOrderBox
           order={this.state.order}
          />
+
+         <Bill
+            order={this.state.order}
+         />
+
         <PersonalOrderForm
           order={this.state.order}
         />

@@ -10,7 +10,7 @@ class Item extends Component {
       personalOrder: this.props.location.state.personalOrder,
       order: this.props.location.state.order,
       name: "",
-      price: "",
+      price: 0,
       description: ""
     }
     this.handleNameChange = this.handleNameChange.bind(this);

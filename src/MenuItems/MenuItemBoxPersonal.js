@@ -20,7 +20,7 @@ class MenuItemBoxPersonal extends Component {
     let menuItems = this.props.restaurant.menuItems.map( (menuItem, index) => {
       return(
         <li key={index}>
-        ${menuItem.price} {menuItem.name}
+        <p>${menuItem.price.toFixed(2)} {menuItem.name}
         <button onClick={() => {
           let order = this.props.order;
           let personalOrder = this.props.personalOrder;
@@ -40,6 +40,9 @@ class MenuItemBoxPersonal extends Component {
             console.log(err)
           })
         }}>+</button>
+        </p>
+
+        <p>{menuItem.description}</p>
         </li>
       )
     })

@@ -15,7 +15,7 @@ class MenuItemBox extends Component {
       let pathname = `/menu_item/${menuItem._id}`
         return(
           <li key={index}>
-          ${menuItem.price}
+            ${menuItem.price.toFixed(2)}
             <Link to={{
               pathname,
               state: {

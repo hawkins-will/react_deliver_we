@@ -6,7 +6,7 @@ class MenuItemForm extends Component {
     super(props);
     this.state = {
       name: "",
-      price: "",
+      price: undefined,
       description: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,7 +20,8 @@ class MenuItemForm extends Component {
   }
 
   handlePriceChange(e) {
-    this.setState( { price: e.target.value });
+    let price = parseFloat(e.target.value)
+    this.setState( { price: price });
   }
 
   handleDescriptionChange(e) {
@@ -31,9 +32,10 @@ class MenuItemForm extends Component {
     e.preventDefault();
     let restaurant = this.props.restaurant;
     let name = this.state.name.trim();
-    let price = parseInt(this.state.price.trim());
+    let price = this.state.price
+    console.log(price);
     let description = this.state.description.trim();
-    restaurant.menuItems.push( {name: name, price: price, description: description })
+    restaurant.menuItems.unshift( {name: name, price: price, description: description })
     let menuItems = restaurant.menuItems
     axios.put(`http://localhost:3001/api/restaurants/${restaurant._id}`, { menuItems: menuItems }).then( res => {
       this.setState( {data: res });
@@ -50,9 +52,9 @@ class MenuItemForm extends Component {
     return(
       <div>
         <form onSubmit={ this.handleSubmit }>
-          <input type="text" placeholder="Name..." value={ this.state.name } onChange={ this.handleNameChange } />
-          <input type="text" placeholder="Price..." value={ this.state.price } onChange={ this.handlePriceChange } />
-          <input type="text" placeholder="Description..." value={ this.state.description } onChange={ this.handleDescriptionChange } />
+          <input type="text" placeholder="Name..." onChange={ this.handleNameChange } />
+          <input type="text" placeholder="Price..." onChange={ this.handlePriceChange } />
+          <input type="text" placeholder="Description..." onChange={ this.handleDescriptionChange } />
           <input type="submit" value="Create Menu Item" />
         </form>
       </div>
