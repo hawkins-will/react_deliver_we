@@ -37,8 +37,8 @@ class Bill extends Component {
         <h2>Bill:</h2>
         {personalOrders}
         **********
-        <p>Total pre-Tip: ${total.toFixed(2)}</p>
-        <p>Total with Tip: ${(total + 5).toFixed(2)}</p>
+        <p>Total pre-Tip: ${(total - 5).toFixed(2)}</p>
+        <p>Total with Tip: ${total.toFixed(2)}</p>
       </div>
     )
   }
