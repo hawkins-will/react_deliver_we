@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom"
+import "./Bill.css"
 
 class Bill extends Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class Bill extends Component {
       )
     })
     return(
-      <div>
+      <div className="bill">
         <h2>Bill:</h2>
         {personalOrders}
         **********
