@@ -76,7 +76,7 @@ class MenuItem extends Component {
     return(
       <div>
         <p>{this.state.menuItem.name} Page</p>
-        <p>${this.state.menuItem.price}</p>
+        <p>${this.state.menuItem.price.toFixed(2)}</p>
         <p>{this.state.menuItem.description}</p>
         <form onSubmit={ this.updateMenuItem }>
           <input type="text" placeholder={ this.state.menuItem.name } onChange={ this.handleNameChange } />

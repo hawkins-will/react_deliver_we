@@ -91,7 +91,7 @@ class Item extends Component {
     return(
       <div>
         <p>{this.state.item.name} Page</p>
-        <p>${this.state.item.price}</p>
+        <p>${this.state.item.price.toFixed(2)}</p>
         <p>{this.state.item.description}</p>
         <form onSubmit={ this.updateItem }>
           <input type="text" placeholder={ this.state.item.name } onChange={ this.handleNameChange } />
