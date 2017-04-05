@@ -10,7 +10,7 @@ class Order extends Component {
     super(props)
     this.state = {
       order: this.props.location.state.active,
-      restaurant: ""
+      restaurant: undefined
     }
     this.handleRestaurantChange = this.handleRestaurantChange.bind(this);
     this.updateOrder = this.updateOrder.bind(this);
@@ -35,7 +35,7 @@ class Order extends Component {
       console.log(err)
     })
     .then(() => {
-      this.setState({ restaurant: "" })
+      this.setState({ restaurant: undefined })
     })
   }
 

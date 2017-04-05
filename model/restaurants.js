@@ -11,6 +11,8 @@ var MenuItemSchema = new Schema({
 
 var RestaurantSchema = new Schema({
   name: String,
+  deliveryFee: Number,
+  deliveryMin: Number,
   menuItems: [MenuItemSchema]
 });
 

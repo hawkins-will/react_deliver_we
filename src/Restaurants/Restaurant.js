@@ -11,7 +11,7 @@ class Restaurant extends Component {
     super(props)
     this.state = {
       restaurant: this.props.location.state.active,
-      name: ""
+      name: undefined
     }
     this.handleNameChange = this.handleNameChange.bind(this);
     this.updateRestaurant = this.updateRestaurant.bind(this);
@@ -37,7 +37,7 @@ class Restaurant extends Component {
       console.log(err)
     })
     .then(() => {
-      this.setState({ name: "" })
+      this.setState({ name: undefined })
     })
   }
 

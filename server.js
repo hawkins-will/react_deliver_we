@@ -39,6 +39,8 @@ router.route("/restaurants")
   .post(function(req, res) {
     var restaurant = new Restaurant();
     restaurant.name = req.body.name;
+    restaurant.deliveryFee = req.body.deliveryFee;
+    restaurant.deliveryMin = req.body.deliveryMin;
     restaurant.save(function(err) {
       if (err)
       res.send(err);

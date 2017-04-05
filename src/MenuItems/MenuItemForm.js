@@ -5,9 +5,9 @@ class MenuItemForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      name: undefined,
       price: undefined,
-      description: ""
+      description: undefined
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -44,7 +44,7 @@ class MenuItemForm extends Component {
       console.log(err)
     })
     .then(() => {
-      this.setState({ name: "", price: "", description: "" })
+      this.setState({ name: undefined, price: undefined, description: undefined })
     })
   }
 

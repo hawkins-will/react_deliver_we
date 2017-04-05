@@ -5,7 +5,7 @@ class PersonalOrderForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ""
+      name: undefined
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -28,7 +28,7 @@ class PersonalOrderForm extends Component {
       console.log(err)
     })
     .then(() => {
-      this.setState({ name: "" })
+      this.setState({ name: undefined })
     })
   }
 

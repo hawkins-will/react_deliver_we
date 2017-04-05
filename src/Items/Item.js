@@ -9,9 +9,9 @@ class Item extends Component {
       item: this.props.location.state.active,
       personalOrder: this.props.location.state.personalOrder,
       order: this.props.location.state.order,
-      name: "",
-      price: 0,
-      description: ""
+      name: undefined,
+      price: undefined,
+      description: undefined
     }
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handlePriceChange = this.handlePriceChange.bind(this);

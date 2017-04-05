@@ -8,9 +8,9 @@ class MenuItem extends Component {
     this.state = {
       menuItem: this.props.location.state.active,
       restaurant: this.props.location.state.restaurant,
-      name: "",
-      price: "",
-      description: ""
+      name: undefined,
+      price: undefined,
+      description: undefined
     }
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handlePriceChange = this.handlePriceChange.bind(this);

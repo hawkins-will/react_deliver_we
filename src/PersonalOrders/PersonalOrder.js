@@ -10,7 +10,7 @@ class PersonalOrder extends Component {
     this.state = {
       personalOrder: this.props.location.state.active,
       order: this.props.location.state.order,
-      name: "",
+      name: undefined,
       restaurant: undefined
     }
     this.handleNameChange = this.handleNameChange.bind(this);
