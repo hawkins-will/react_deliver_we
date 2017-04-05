@@ -35,8 +35,8 @@ class MenuItemForm extends Component {
     let price = this.state.price
     let description = this.state.description.trim();
     restaurant.menuItems.unshift( {name: name, price: price, description: description })
-    let menuItems = restaurant.menuItems
-    this.props.handleNewMenuItem({ menuItems: menuItems })
+    let menuItems = restaurant.menuItems;
+    this.props.handleNewMenuItem(menuItems)
     this.setState({ name: undefined, price: undefined, description: undefined })
   }
 
