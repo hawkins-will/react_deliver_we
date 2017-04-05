@@ -21,7 +21,7 @@ class PersonalOrderForm extends Component {
     let name = this.state.name.trim();
     order.personalOrders.push( {name: name })
     let personalOrders = order.personalOrders
-    this.props.handleNewPersonalOrder({personalOrders: personalOrders})
+    this.props.handleNewPersonalOrder(personalOrders)
     this.setState({ name: undefined })
   }
 

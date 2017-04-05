@@ -1,11 +1,30 @@
 import React, { Component } from "react";
-// import axios from "axios"
+import axios from "axios"
 import { Link } from "react-router-dom"
+import MenuItemBoxPersonal from "../MenuItems/MenuItemBoxPersonal";
 
 class ItemBox extends Component {
   constructor(props) {
     super(props);
-    this.state = { items: [] };
+    let personalOrder =  this.props.personalOrder
+    let order = this.props.order
+    let restaurant = this.props.restaurant
+    this.state = {
+      items: personalOrder.items,
+      personalOrder: personalOrder,
+      order: order,
+      restaurant: restaurant
+     };
+  }
+
+  handleNewItem(newItems){
+    let order = this.state.order
+    axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newItems }).then( res => {
+      this.setState( {items: newItems });
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   render() {
@@ -35,6 +54,9 @@ class ItemBox extends Component {
           <ol>
             {items}
           </ol>
+          <MenuItemBoxPersonal
+            restaurant={this.state.restaurant} order={this.state.order} personalOrder={this.state.personalOrder} handleNewItem={(e) => this.handleNewItem(e)}
+          />
       </div>
     )
   }

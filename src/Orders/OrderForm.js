@@ -21,6 +21,12 @@ class OrderForm extends Component {
     let deliveryFee = this.state.deliveryFee;
     let deliveryMin = this.state.deliveryMin;
     let tax = this.state.tax;
+    axios.post("http://localhost:3001/api/orders", { restaurant, restaurantId, deliveryFee, deliveryMin, tax }).then( res => {
+      this.setState( {data: res });
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   render(){

@@ -8,7 +8,6 @@ class PersonalOrderBox extends Component {
     super(props);
     let order = this.props.order
     let personalOrders = order.personalOrders
-    console.log(personalOrders);
     this.state = {
       personalOrders: personalOrders,
       order: order
@@ -17,8 +16,6 @@ class PersonalOrderBox extends Component {
 
   handleNewPersonalOrder(newPersonalOrders){
     let order = this.state.order
-    console.log(order);
-    console.log(newPersonalOrders);
     axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newPersonalOrders }).then( res => {
       console.log("Updating...");
       this.setState( {personalOrders: newPersonalOrders });
@@ -41,7 +38,6 @@ class PersonalOrderBox extends Component {
                }
             }}>
               {personalOrder.name}
-              hi
             </Link>
           </li>
         )

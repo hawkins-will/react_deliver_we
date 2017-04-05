@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import marked from "marked";
 import axios from "axios";
-import MenuItemBoxPersonal from "../MenuItems/MenuItemBoxPersonal";
 import ItemBox from "../Items/ItemBox";
 
 class PersonalOrder extends Component {
@@ -87,11 +86,7 @@ class PersonalOrder extends Component {
           <button onClick={ this.deletePersonalOrder }>Delete</button>
 
           <ItemBox
-            order={this.state.order} personalOrder={this.state.personalOrder}
-          />
-
-          <MenuItemBoxPersonal
-            restaurant={this.state.restaurant} order={this.state.order} personalOrder={this.state.personalOrder}
+            order={this.state.order} personalOrder={this.state.personalOrder} restaurant={this.state.restaurant}
           />
         </div>
       )

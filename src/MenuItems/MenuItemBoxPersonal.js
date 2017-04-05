@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios"
+// import axios from "axios"
 // import { Link } from "react-router-dom"
 
 class MenuItemBoxPersonal extends Component {
@@ -33,12 +33,7 @@ class MenuItemBoxPersonal extends Component {
           let description = menuItem.description
           personalOrder.items.push( {name: name, price: price, description: description })
           newArray.unshift(personalOrder);
-          axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newArray }).then( res => {
-            this.setState( {data: res });
-          })
-          .catch(err => {
-            console.log(err)
-          })
+          this.props.handleNewItem(newArray)
         }}>+</button>
         </p>
 

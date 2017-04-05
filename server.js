@@ -93,10 +93,10 @@ router.route("/restaurants/:restaurant_id")
       order.deliveryFee = req.body.deliveryFee;
       order.deliveryMin = req.body.deliveryMin;
       order.tax = req.body.tax;
-      order.save(function(err) {
+      order.save(function(err, order) {
         if (err)
         res.send(err);
-        res.json({ message: "Order successfully added!" });
+        res.json(order);
       });
     });
 
