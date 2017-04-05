@@ -9,7 +9,8 @@ class Bill extends Component {
 
   render() {
     let total = 0
-
+    let personalTip = 5/this.props.order.personalOrders.length
+    console.log(personalTip);
     let personalOrders = this.props.order.personalOrders.map( (personalOrder, index) => {
       let personalTotal = 0
       let items = personalOrder.items.map( (item, index) => {
@@ -18,11 +19,15 @@ class Bill extends Component {
             <p>${item.price.toFixed(2)} {item.name}</p>
         )
       })
+      let personalTax = personalTotal*0.1
+      personalTotal = personalTotal + personalTax + personalTip
       total = total + personalTotal
       return(
         <div>
           <h4>{personalOrder.name}</h4>
           <ul>{items}</ul>
+          <p>Tax: ${personalTax.toFixed(2)}</p>
+          <p>Personal Tip: ${personalTip.toFixed(2)}</p>
           <p>Personal Total: ${personalTotal.toFixed(2)}</p>
         </div>
       )
@@ -31,7 +36,9 @@ class Bill extends Component {
       <div>
         <h2>Bill:</h2>
         {personalOrders}
-        <p>Total: ${total.toFixed(2)}</p>
+        **********
+        <p>Total pre-Tip: ${total.toFixed(2)}</p>
+        <p>Total with Tip: ${(total + 5).toFixed(2)}</p>
       </div>
     )
   }
