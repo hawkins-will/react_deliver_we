@@ -61,7 +61,7 @@ class Restaurant extends Component {
         <button onClick={ this.deleteRestaurant }>Delete</button>
 
         <OrderForm
-          restaurant={this.state.restaurant._id}
+          restaurant={this.state.restaurant}
         />
 
         <MenuItemBox

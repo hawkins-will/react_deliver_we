@@ -4,26 +4,24 @@ import axios from "axios";
 class OrderForm extends Component {
   constructor(props) {
     super(props);
-    let restaurant = this.props.restaurant
     this.state = {
-      restaurant: restaurant,
-      restaurantId: this.props.restaurantId
+      restaurant: this.props.restaurant.name,
+      restaurantId: this.props.restaurant._id,
+      deliveryFee: this.props.restaurant.deliveryFee,
+      deliveryMin: this.props.restaurant.deliveryMin,
+      tax: this.props.restaurant.tax
      };
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  componentDidMount(){
-    axios.get("http://localhost:3001/api/restaurants/" + this.props.restaurant).then((response) => {
-      this.setState({
-        restaurant: response.data.name
-      })
-    })
   }
 
   handleSubmit(e) {
     e.preventDefault();
     let restaurant = this.state.restaurant.trim();
-    let restaurantId = this.props.restaurant.trim();
-    axios.post("http://localhost:3001/api/orders", { restaurant: restaurant, restaurantId: restaurantId }).then( res => {
+    let restaurantId = this.state.restaurantId.trim();
+    let deliveryFee = this.state.deliveryFee;
+    let deliveryMin = this.state.deliveryMin;
+    let tax = this.state.tax;
+    axios.post("http://localhost:3001/api/orders", { restaurant, restaurantId, deliveryFee, deliveryMin, tax }).then( res => {
       this.setState( {data: res });
     })
     .catch(err => {

@@ -90,6 +90,9 @@ router.route("/restaurants/:restaurant_id")
       var order = new Order();
       order.restaurant = req.body.restaurant;
       order.restaurantId = req.body.restaurantId;
+      order.deliveryFee = req.body.deliveryFee;
+      order.deliveryMin = req.body.deliveryMin;
+      order.tax = req.body.tax;
       order.save(function(err) {
         if (err)
         res.send(err);

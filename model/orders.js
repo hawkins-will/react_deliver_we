@@ -17,6 +17,9 @@ var PersonalOrderSchema = new Schema({
 var OrderSchema = new Schema({
   restaurant: String,
   restaurantId: String,
+  deliveryFee: Number,
+  deliveryMin: Number,
+  tax: Number,
   personalOrders: [PersonalOrderSchema]
 });
 

@@ -40,7 +40,7 @@ class Order extends Component {
   }
 
   deleteOrder(e) {
-    let restaurant = this.state.restaurant.trim();
+    let restaurant = this.state.restaurant
     axios.delete(`http://localhost:3001/api/orders/${this.state.order._id}`, { restaurant: restaurant }).then( res => {
       console.log("Order Deleted");
     })
