@@ -13,6 +13,7 @@ var RestaurantSchema = new Schema({
   name: String,
   deliveryFee: Number,
   deliveryMin: Number,
+  tax: Number,
   menuItems: [MenuItemSchema]
 });
 

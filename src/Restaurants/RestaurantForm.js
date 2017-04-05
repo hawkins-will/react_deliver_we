@@ -7,11 +7,13 @@ class RestaurantForm extends Component {
     this.state = {
       name: undefined,
       deliveryFee: undefined,
-      deliveryMin: undefined
+      deliveryMin: undefined,
+      tax: undefined
      };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleFeeChange = this.handleFeeChange.bind(this);
     this.handleMinChange = this.handleMinChange.bind(this);
+    this.handleTaxChange = this.handleTaxChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -29,19 +31,25 @@ class RestaurantForm extends Component {
     this.setState( { deliveryMin: min });
   }
 
+  handleTaxChange(e) {
+    let tax = parseFloat(e.target.value)
+    this.setState( { tax: tax });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     let name = this.state.name.trim();
     let deliveryFee = this.state.deliveryFee;
     let deliveryMin = this.state.deliveryMin;
-    axios.post("http://localhost:3001/api/restaurants", { name: name, deliveryFee: deliveryFee, deliveryMin: deliveryMin }).then( res => {
+    let tax = this.state.tax;
+    axios.post("http://localhost:3001/api/restaurants", { name: name, deliveryFee: deliveryFee, deliveryMin: deliveryMin, tax: tax }).then( res => {
       this.setState( {data: res });
     })
     .catch(err => {
       console.log(err)
     })
     .then(() => {
-      this.setState({ name: undefined, deliveryFee: undefined, deliveryMin: undefined })
+      this.setState({ name: undefined, deliveryFee: undefined, deliveryMin: undefined, tax: undefined })
     })
   }
 
@@ -51,6 +59,7 @@ class RestaurantForm extends Component {
         <input type="text" placeholder="Restaurant Name..." onChange={ this.handleNameChange } />
         <input type="text" placeholder="Restaurant Delivery Fee..." onChange={ this.handleFeeChange } />
         <input type="text" placeholder="Restaurant Delivery Minimum..." onChange={ this.handleMinChange } />
+        <input type="text" placeholder="Restaurant Tax..." onChange={ this.handleTaxChange } />
         <input type="submit" value="Post" />
       </form>
     )
