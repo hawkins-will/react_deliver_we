@@ -16,6 +16,17 @@ class RestaurantBox extends Component {
     })
   }
 
+  handleNewRestaurant(newRestaurant){
+    axios.post("http://localhost:3001/api/restaurants", newRestaurant).then( res => {
+      let restaurants = this.state.restaurants
+      let newRestaurants = restaurants.concat([res.data])
+      this.setState( {restaurants: newRestaurants });
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
   render() {
     let restaurants = this.state.restaurants.map( (restaurant, index) => {
       let pathname = `/restaurant/${restaurant.name}`
@@ -36,7 +47,9 @@ class RestaurantBox extends Component {
           <ol>
             {restaurants}
           </ol>
-          <RestaurantForm />
+          <RestaurantForm
+            handleNewRestaurant={(e) => this.handleNewRestaurant(e)}
+          />
       </div>
     )
   }

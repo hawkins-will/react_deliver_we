@@ -42,15 +42,8 @@ class RestaurantForm extends Component {
     let deliveryFee = this.state.deliveryFee;
     let deliveryMin = this.state.deliveryMin;
     let tax = this.state.tax;
-    axios.post("http://localhost:3001/api/restaurants", { name: name, deliveryFee: deliveryFee, deliveryMin: deliveryMin, tax: tax }).then( res => {
-      this.setState( {data: res });
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    .then(() => {
-      this.setState({ name: undefined, deliveryFee: undefined, deliveryMin: undefined, tax: undefined })
-    })
+    this.props.handleNewRestaurant({ name: name, deliveryFee: deliveryFee, deliveryMin: deliveryMin, tax: tax })
+    this.setState({ name: undefined, deliveryFee: undefined, deliveryMin: undefined, tax: undefined })
   }
 
   render(){

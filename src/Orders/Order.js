@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import marked from "marked";
 import axios from "axios";
-import PersonalOrderForm from "../PersonalOrders/PersonalOrderForm"
 import PersonalOrderBox from "../PersonalOrders/PersonalOrderBox"
 import Bill from "../Bills/Bill"
 
@@ -36,10 +35,6 @@ class Order extends Component {
         <button onClick={ this.deleteOrder }>Delete</button>
         <PersonalOrderBox
           order={this.state.order}
-         />
-
-         <PersonalOrderForm
-           order={this.state.order}
          />
 
          <Bill

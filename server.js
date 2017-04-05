@@ -42,10 +42,10 @@ router.route("/restaurants")
     restaurant.deliveryFee = req.body.deliveryFee;
     restaurant.deliveryMin = req.body.deliveryMin;
     restaurant.tax = req.body.tax;
-    restaurant.save(function(err) {
+    restaurant.save(function(err, restaurant) {
       if (err)
       res.send(err);
-      res.json({ message: "Restaurant successfully added!" });
+      res.json(restaurant);
     });
   });
 

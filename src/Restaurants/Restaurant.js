@@ -69,11 +69,6 @@ class Restaurant extends Component {
         <MenuItemBox
           restaurant={this.state.restaurant}
         />
-
-        <MenuItemForm
-          restaurant={this.state.restaurant}
-        />
-
       </div>
     )
   }

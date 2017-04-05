@@ -1,11 +1,27 @@
 import React, { Component } from "react";
-// import axios from "axios"
+import axios from "axios"
 import { Link } from "react-router-dom"
+import PersonalOrderForm from "../PersonalOrders/PersonalOrderForm"
 
 class PersonalOrderBox extends Component {
   constructor(props) {
     super(props);
-    this.state = { personalOrders: [] };
+    let order = this.props.order
+    let personalOrders = order.personalOrders
+    this.state = {
+      personalOrders: personalOrders,
+      order: order
+     };
+  }
+
+  handleNewPersonalOrder(newPersonalOrders){
+    let order = this.state.order
+    axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newPersonalOrders }).then( res => {
+      this.setState( {personalOrders: newPersonalOrders });
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   render() {
@@ -31,6 +47,10 @@ class PersonalOrderBox extends Component {
           <ol>
             {personalOrders}
           </ol>
+
+          <PersonalOrderForm
+            order={this.state.order} handleNewPersonalOrder={(e) => this.handleNewPersonalOrder(e)}
+          />
       </div>
     )
   }

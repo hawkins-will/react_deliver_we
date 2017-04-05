@@ -33,19 +33,11 @@ class MenuItemForm extends Component {
     let restaurant = this.props.restaurant;
     let name = this.state.name.trim();
     let price = this.state.price
-    console.log(price);
     let description = this.state.description.trim();
     restaurant.menuItems.unshift( {name: name, price: price, description: description })
     let menuItems = restaurant.menuItems
-    axios.put(`http://localhost:3001/api/restaurants/${restaurant._id}`, { menuItems: menuItems }).then( res => {
-      this.setState( {data: res });
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    .then(() => {
-      this.setState({ name: undefined, price: undefined, description: undefined })
-    })
+    this.props.handleNewMenuItem({ menuItems: menuItems })
+    this.setState({ name: undefined, price: undefined, description: undefined })
   }
 
   render(){

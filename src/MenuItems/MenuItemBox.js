@@ -1,17 +1,31 @@
 import React, { Component } from "react";
-// import axios from "axios"
+import axios from "axios"
 import { Link } from "react-router-dom"
+import MenuItemForm from "../MenuItems/MenuItemForm"
 
 class MenuItemBox extends Component {
   constructor(props) {
     super(props);
     let restaurant = this.props.restaurant;
-    this.state = { restaurant: restaurant };
+    this.state = {
+      restaurant: restaurant,
+      menuItems: restaurant.menuItems
+     };
+  }
+
+  handleNewMenuItem(newMenuItems){
+    let restaurant = this.state.restaurant
+    axios.put(`http://localhost:3001/api/restaurants/${restaurant._id}`, { menuItems: newMenuItems }).then( res => {
+      this.setState( {menuItems: newMenuItems });
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   render() {
-    let restaurant = this.props.restaurant;
-    let menuItems = this.props.restaurant.menuItems.map( (menuItem, index) => {
+    let restaurant = this.state.restaurant;
+    let menuItems = this.state.restaurant.menuItems.map( (menuItem, index) => {
       let pathname = `/menu_item/${menuItem.name}`
         return(
           <li key={index}>
@@ -20,7 +34,7 @@ class MenuItemBox extends Component {
               pathname,
               state: {
                 active: menuItem,
-                restaurant: this.props.restaurant
+                restaurant: this.state.restaurant
                }
             }}>
               {menuItem.name}
@@ -34,6 +48,10 @@ class MenuItemBox extends Component {
           <ul>
             {menuItems}
           </ul>
+
+          <MenuItemForm
+            restaurant={this.state.restaurant} handleNewMenuItem={(e) => this.handleNewMenuItem(e)}
+          />
       </div>
     )
   }

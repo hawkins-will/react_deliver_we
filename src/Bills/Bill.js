@@ -12,7 +12,6 @@ class Bill extends Component {
     let total = 0
     let personalTip = 5/this.props.order.personalOrders.length
     let personalFee = this.props.order.deliveryFee/this.props.order.personalOrders.length
-    console.log(personalFee);
     let personalOrders = this.props.order.personalOrders.map( (personalOrder, index) => {
       let personalTotal = 0
       let items = personalOrder.items.map( (item, index) => {

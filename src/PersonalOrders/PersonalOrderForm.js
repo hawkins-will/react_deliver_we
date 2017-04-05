@@ -21,15 +21,8 @@ class PersonalOrderForm extends Component {
     let name = this.state.name.trim();
     order.personalOrders.push( {name: name })
     let personalOrders = order.personalOrders
-    axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: personalOrders }).then( res => {
-      this.setState( {data: res });
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    .then(() => {
-      this.setState({ name: undefined })
-    })
+    this.props.handleNewPersonalOrder({personalOrders: personalOrders})
+    this.setState({ name: undefined })
   }
 
   render(){
