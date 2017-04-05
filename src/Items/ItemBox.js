@@ -44,6 +44,34 @@ class ItemBox extends Component {
             }}>
               {item.name}
             </Link>
+
+
+            <button onClick={() => {
+              let order = this.state.order;
+              let personalOrder = this.state.personalOrder;
+              let itemId = item._id;
+              let newArray = personalOrder.items.filter((personalOrderItem) => {
+                return personalOrderItem._id !== itemId
+              })
+              personalOrder.items = newArray;
+              let personalId = personalOrder._id;
+              let newPersonalOrdersArray = order.personalOrders.filter((personalOrder) => {
+                return personalOrder._id !== personalId
+              })
+              newPersonalOrdersArray.push(personalOrder)
+
+              axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newPersonalOrdersArray }).then( res => {
+                console.log("Item Deleted");
+              })
+              .catch(err => {
+                console.error(err);
+              }).then(() => {
+                this.setState({items: newArray})
+              })
+
+            }}>-</button>
+
+
           </li>
         )
     })

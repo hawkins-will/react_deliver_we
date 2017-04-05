@@ -86,7 +86,7 @@ class PersonalOrder extends Component {
           <button onClick={ this.deletePersonalOrder }>Delete</button>
 
           <ItemBox
-            order={this.state.order} personalOrder={this.state.personalOrder} restaurant={this.state.restaurant}
+            order={this.state.order} personalOrder={this.state.personalOrder} restaurant={this.state.restaurant} handleDeleteItem={(e) => this.handleDeleteItem(e)}
           />
         </div>
       )
