@@ -41,18 +41,20 @@ class App extends Component {
       <Router>
         <div>
           <nav>
-            <h1>DeliverWe</h1>
-            <span className="link">
-              <Link to="/">Home</Link>
-            </span>
+            <Link to="/"><img className="logo" src={"DeliverWe.png"} alt="Deliver We Logo" /></Link>
+              <span className="links">
+                <Link to="/orders">
+                  <div className="link">
+                    Orders
+                  </div>
+                </Link>
 
-            <span className="link">
-              <Link to="/orders">Orders</Link>
-            </span>
-
-            <span className="link">
-              <Link to="/restaurants">Restaurants</Link>
-            </span>
+                <Link to="/restaurants">
+                  <div className="link">
+                    Restaurants
+                  </div>
+                </Link>
+              </span>
           </nav>
 
           <Route path="/"
@@ -73,13 +75,8 @@ class App extends Component {
           <Route exact path="/"
             render={() =>
               <div>
-                <span className="link">
                   <Link to="/orders">Orders</Link>
-                </span>
-
-                <span className="link">
                   <Link to="/restaurants">Restaurants</Link>
-                </span>
               </div>
             }
           />
