@@ -18,7 +18,7 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      newOrder: undefined,
+      newOrder: false,
       orderDeleted: false,
       personalOrderDeleted: false
     }
@@ -30,6 +30,10 @@ class App extends Component {
 
   handlePersonalOrderDeleted(){
     this.setState({ personalOrderDeleted: true })
+  }
+
+  handleOrderAdded(){
+    this.setState({ newOrder: true })
   }
 
   render() {
@@ -53,11 +57,16 @@ class App extends Component {
 
           <Route path="/"
             render={() => {
-              if(this.state.orderDeleted || this.state.personalOrderDeleted){
+              if(this.state.orderDeleted || this.state.personalOrderDeleted) {
+                this.setState({orderDeleted: false, personalOrderDeleted: false})
                 return <Redirect to="/" />
+              } else if (this.state.newOrder) {
+                this.setState({newOrder: false})
+                return <Redirect to="/orders" />
               } else {
                 return null
               }
+              console.log(this.state.orderDeleted);
             }}
           />
 
@@ -79,8 +88,7 @@ class App extends Component {
             render={() => {
               return(
                 <OrderBox
-                  handleOrderDeleted={() => this.handleOrderDeleted()}
-                  handlePersonalOrderDeleted={() => this.handlePersonalOrderDeleted()}
+                  handleOrderDeleted={() => this.handleOrderDeleted()} handlePersonalOrderDeleted={() => this.handlePersonalOrderDeleted()}
                 />
               )
             }}
@@ -93,6 +101,7 @@ class App extends Component {
           <Route path="/restaurants"
             render={() =>
               <RestaurantBox
+                handleOrderAdded={() => this.handleOrderAdded()}
               />
             }
           />

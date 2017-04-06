@@ -27,6 +27,10 @@ class RestaurantBox extends Component {
     })
   }
 
+  handleOrderAdded(){
+    this.props.handleOrderAdded()
+  }
+
   render() {
     let restaurants = this.state.restaurants.map( (restaurant, index) => {
       let pathname = `/restaurant/${restaurant.name}`
@@ -34,7 +38,8 @@ class RestaurantBox extends Component {
         <li key={index}>
           <Link to={{
             pathname,
-            state: {active: restaurant }
+            state: {active: restaurant },
+            props: {handleOrderAdded: () => this.handleOrderAdded()}
           }}>
             {restaurant.name}
           </Link>

@@ -51,6 +51,10 @@ class Restaurant extends Component {
     })
   }
 
+  handleOrderAdded(){
+    this.props.location.props.handleOrderAdded()
+  }
+
   render() {
     return(
       <div>
@@ -63,6 +67,7 @@ class Restaurant extends Component {
 
         <OrderForm
           restaurant={this.state.restaurant}
+          handleOrderAdded={() => this.handleOrderAdded()}
         />
 
         <MenuItemBox

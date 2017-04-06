@@ -26,6 +26,8 @@ class OrderForm extends Component {
     })
     .catch(err => {
       console.log(err)
+    }).then(() => {
+      this.props.handleOrderAdded()
     })
   }
 
