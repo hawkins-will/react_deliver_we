@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import marked from "marked";
 import axios from "axios";
+import {
+  BrowserRouter as Router,
+  Redirect
+} from "react-router-dom"
 import PersonalOrderBox from "../PersonalOrders/PersonalOrderBox"
 import Bill from "../Bills/Bill"
 
@@ -21,12 +25,15 @@ class Order extends Component {
   deleteOrder(e) {
     let restaurant = this.state.restaurant
     axios.delete(`http://localhost:3001/api/orders/${this.state.order._id}`, { restaurant: restaurant }).then( res => {
-      console.log("Order Deleted");
     })
     .catch(err => {
       console.error(err);
+    }).then(() => {
+      this.props.location.props.handleOrderDeleted()
     })
+
   }
+
 
   render() {
     return(

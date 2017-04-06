@@ -13,6 +13,7 @@ class MenuItemBoxPersonal extends Component {
       order: order,
       personalOrder: personalOrder
     }
+    console.log(this.props);
   }
 
   render() {

@@ -3,7 +3,6 @@ import marked from "marked";
 import axios from "axios";
 import OrderForm from "../Orders/OrderForm"
 import MenuItemBox from "../MenuItems/MenuItemBox"
-import MenuItemForm from "../MenuItems/MenuItemForm"
 
 
 class Restaurant extends Component {

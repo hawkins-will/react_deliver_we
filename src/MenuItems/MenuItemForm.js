@@ -9,6 +9,7 @@ class MenuItemForm extends Component {
       price: undefined,
       description: undefined
     }
+    console.log(this.props.handleNewMenuItem());
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handlePriceChange = this.handlePriceChange.bind(this);

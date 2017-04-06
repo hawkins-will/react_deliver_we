@@ -15,7 +15,6 @@ class MenuItemBox extends Component {
 
   handleNewMenuItem(newMenuItems){
     let restaurant = this.state.restaurant
-    console.log(newMenuItems);
     axios.put(`http://localhost:3001/api/restaurants/${restaurant._id}`, { menuItems: newMenuItems }).then( res => {
       this.setState( {menuItems: newMenuItems });
     })

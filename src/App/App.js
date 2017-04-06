@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  // Redirect
+  Redirect
 } from "react-router-dom"
 import RestaurantBox from "../Restaurants/RestaurantBox"
 import Restaurant from "../Restaurants/Restaurant"
@@ -15,6 +15,23 @@ import Item from "../Items/Item"
 import "./App.css"
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      newOrder: undefined,
+      orderDeleted: false,
+      personalOrderDeleted: false
+    }
+  }
+
+  handleOrderDeleted(){
+    this.setState({ orderDeleted: true })
+  }
+
+  handlePersonalOrderDeleted(){
+    this.setState({ personalOrderDeleted: true })
+  }
+
   render() {
     return (
       <Router>
@@ -34,6 +51,16 @@ class App extends Component {
             </span>
           </nav>
 
+          <Route path="/"
+            render={() => {
+              if(this.state.orderDeleted){
+                return <Redirect to="/orders" />
+              } else {
+                return null
+              }
+            }}
+          />
+
           <Route exact path="/"
             render={() =>
               <div>
@@ -49,10 +76,13 @@ class App extends Component {
           />
 
           <Route path="/orders"
-            render={() =>
-              <OrderBox
-              />
-            }
+            render={() => {
+              return(
+                <OrderBox
+                  handleOrderDeleted={() => this.handleOrderDeleted()}
+                />
+              )
+            }}
           />
 
           <Route path="/order/:restaurant"
