@@ -53,8 +53,8 @@ class App extends Component {
 
           <Route path="/"
             render={() => {
-              if(this.state.orderDeleted){
-                return <Redirect to="/orders" />
+              if(this.state.orderDeleted || this.state.personalOrderDeleted){
+                return <Redirect to="/" />
               } else {
                 return null
               }
@@ -80,6 +80,7 @@ class App extends Component {
               return(
                 <OrderBox
                   handleOrderDeleted={() => this.handleOrderDeleted()}
+                  handlePersonalOrderDeleted={() => this.handlePersonalOrderDeleted()}
                 />
               )
             }}

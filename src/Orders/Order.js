@@ -31,9 +31,11 @@ class Order extends Component {
     }).then(() => {
       this.props.location.props.handleOrderDeleted()
     })
-
   }
 
+  handlePersonalOrderDeleted(){
+    this.props.location.props.handlePersonalOrderDeleted()
+  }
 
   render() {
     return(
@@ -41,7 +43,7 @@ class Order extends Component {
         <p>Order from {this.state.order.restaurant}</p>
         <button onClick={ this.deleteOrder }>Delete</button>
         <PersonalOrderBox
-          order={this.state.order}
+          order={this.state.order} handlePersonalOrderDeleted={() => this.handlePersonalOrderDeleted()}
          />
 
          <Bill

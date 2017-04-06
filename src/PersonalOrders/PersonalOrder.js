@@ -66,6 +66,8 @@ class PersonalOrder extends Component {
     })
     .catch(err => {
       console.error(err);
+    }).then(() => {
+      this.props.location.props.handlePersonalOrderDeleted()
     })
   }
 

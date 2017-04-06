@@ -19,6 +19,10 @@ class OrderBox extends Component {
     this.props.handleOrderDeleted()
   }
 
+  handlePersonalOrderDeleted(){
+    this.props.handlePersonalOrderDeleted()
+  }
+
   render() {
     let orders = this.state.orders.map( (order, index) => {
       let pathname = `/order/${order.restaurant}`
@@ -27,7 +31,10 @@ class OrderBox extends Component {
           <Link to={{
             pathname,
             state: {active: order},
-            props: {handleOrderDeleted: () => this.handleOrderDeleted()}
+            props: {
+              handleOrderDeleted: () => this.handleOrderDeleted(),
+              handlePersonalOrderDeleted: () => this.handlePersonalOrderDeleted()
+            }
 
           }}>
             Order from {order.restaurant}

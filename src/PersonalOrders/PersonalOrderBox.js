@@ -25,6 +25,10 @@ class PersonalOrderBox extends Component {
     })
   }
 
+  handlePersonalOrderDeleted(){
+    this.props.handlePersonalOrderDeleted()
+  }
+
   render() {
     let personalOrders = this.props.order.personalOrders.map( (personalOrder, index) => {
       let pathname = `/personal_order/${personalOrder.name}`
@@ -35,7 +39,8 @@ class PersonalOrderBox extends Component {
               state: {
                 active: personalOrder,
                 order: this.props.order
-               }
+              },
+              props: {handlePersonalOrderDeleted: () => this.handlePersonalOrderDeleted()}
             }}>
               {personalOrder.name}
             </Link>
