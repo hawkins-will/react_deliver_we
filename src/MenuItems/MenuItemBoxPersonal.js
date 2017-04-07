@@ -21,7 +21,7 @@ class MenuItemBoxPersonal extends Component {
     let restaurant = this.props.restaurant;
     let menuItems = this.props.restaurant.menuItems.map( (menuItem, index) => {
       return(
-        <div className="menuItemDiv" key={index} onClick={() => {
+        <div className="personalMenuItemDiv" key={index} onClick={() => {
           let order = this.props.order;
           let personalOrder = this.props.personalOrder;
           let personalId = this.props.personalOrder._id;

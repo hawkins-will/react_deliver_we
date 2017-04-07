@@ -1,0 +1,36 @@
+.menuItemBox {
+
+}
+
+.menuItemBox h2 {
+
+}
+
+.menuItemDiv {
+  width: 340px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  padding: 5px;
+  background: white;
+  background-color: rgba(235,235,235,1);
+  height: 75px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.menuItemHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menuDescription {
+  font-size: 12px;
+}

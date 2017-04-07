@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios"
 import { Link } from "react-router-dom"
 import MenuItemForm from "../MenuItems/MenuItemForm"
+import "./MenuItemBox.css"
 
 class MenuItemBox extends Component {
   constructor(props) {
@@ -28,30 +29,21 @@ class MenuItemBox extends Component {
     let menuItems = this.state.restaurant.menuItems.map( (menuItem, index) => {
       let pathname = `/menu_item/${menuItem.name}`
         return(
-          <li key={index}>
-            ${menuItem.price.toFixed(2)}
-            <Link to={{
-              pathname,
-              state: {
-                active: menuItem,
-                restaurant: this.state.restaurant
-               }
-            }}>
-              {menuItem.name}
-            </Link>
-          </li>
+          <div className="menuItemDiv" key={index}>
+            <p className="menuItemHeader"><span>{menuItem.name}</span> ${menuItem.price.toFixed(2)}</p>
+            <p className="menuDescription">{menuItem.description}</p>
+          </div>
         )
     })
     return(
-      <div>
+      <div className="menuItemBox">
         <h2>{restaurant.name} Menu:</h2>
-          <ul>
-            {menuItems}
-          </ul>
-
-          <MenuItemForm
-            restaurant={this.state.restaurant} handleNewMenuItem={(e) => this.handleNewMenuItem(e)}
-          />
+        <div className="menu">
+          {menuItems}
+        </div>
+        <MenuItemForm
+          restaurant={this.state.restaurant} handleNewMenuItem={(e) => this.handleNewMenuItem(e)}
+        />
       </div>
     )
   }
