@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios"
 import { Link } from "react-router-dom"
 import RestaurantForm from "./RestaurantForm"
+import "./RestaurantBox.css"
 
 class RestaurantBox extends Component {
   constructor(props) {
@@ -35,26 +36,36 @@ class RestaurantBox extends Component {
     let restaurants = this.state.restaurants.map( (restaurant, index) => {
       let pathname = `/restaurant/${restaurant.name}`
       return(
-        <li key={index}>
+        <div className="restaurantDiv" key={index}>
           <Link to={{
             pathname,
             state: {active: restaurant },
             props: {handleOrderAdded: () => this.handleOrderAdded()}
           }}>
-            {restaurant.name}
+            <p>{restaurant.name}</p>
           </Link>
-        </li>
+          <div className="restaurantInfoContainer">
+            <img />
+            <div className="restaurantInfo">
+              <p className="restaurantInfoTitle">Delivery Fee</p>
+              <p>${restaurant.deliveryFee.toFixed(2)}</p>
+            </div>
+            <div className="restaurantInfo">
+              <p className="restaurantInfoTitle">Minimum</p>
+              <p>${restaurant.deliveryMin.toFixed(2)}</p>
+            </div>
+          </div>
+        </div>
       )
     })
     return(
       <div>
-        <h2>Restaurants:</h2>
-          <ol>
-            {restaurants}
-          </ol>
-          <RestaurantForm
-            handleNewRestaurant={(e) => this.handleNewRestaurant(e)}
-          />
+        <div>
+          {restaurants}
+        </div>
+        <RestaurantForm
+          handleNewRestaurant={(e) => this.handleNewRestaurant(e)}
+        />
       </div>
     )
   }

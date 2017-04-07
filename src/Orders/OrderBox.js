@@ -36,7 +36,6 @@ class OrderBox extends Component {
               handleOrderDeleted: () => this.handleOrderDeleted(),
               handlePersonalOrderDeleted: () => this.handlePersonalOrderDeleted()
             }
-
           }}>
             <p>Order from "{order.restaurant}"</p>
           </Link>

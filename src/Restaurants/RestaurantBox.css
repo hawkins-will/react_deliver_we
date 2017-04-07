@@ -1,0 +1,27 @@
+.restaurantDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100px;
+  padding: 10px;
+  border-bottom: 2px solid grey;
+}
+
+.restaurantDiv a {
+  width: 300px;
+}
+
+.restaurantInfoContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.restaurantInfo {
+  padding-bottom: 10px;
+}
+
+.restaurantInfoTitle {
+  padding-bottom: 10px;
+  color: grey;
+}
