@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import marked from "marked";
 import axios from "axios";
 import ItemBox from "../Items/ItemBox";
+import "./PersonalOrder.css"
 
 class PersonalOrder extends Component {
   constructor(props){
@@ -79,13 +80,12 @@ class PersonalOrder extends Component {
       )
     } else {
       return(
-        <div>
-          <p>{this.state.personalOrder.name} Page</p>
+        <div className="personalOrderPage">
+          <p className="personalOrderTitle">{this.state.personalOrder.name}s Order <span className="cancelOrder" onClick={ this.deletePersonalOrder }> cancel</span></p>
           <form onSubmit={ this.updatePersonalOrder }>
             <input type="text" placeholder={ this.state.personalOrder.name } onChange={ this.handleNameChange } />
             <input type="submit" value="Update" />
           </form>
-          <button onClick={ this.deletePersonalOrder }>Delete</button>
 
           <ItemBox
             order={this.state.order} personalOrder={this.state.personalOrder} restaurant={this.state.restaurant} handleDeleteItem={(e) => this.handleDeleteItem(e)}

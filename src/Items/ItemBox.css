@@ -1,0 +1,51 @@
+.itemBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.itemBoxLeft {
+  width: 700px;
+}
+
+.personalOrderItem {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.deleteItem {
+  color: red;
+  font-weight: bold;
+  font-size: 12px;
+  padding-right: 10px;
+}
+
+.deleteItem:hover {
+  cursor: pointer;
+}
+
+.personalOrderTotal {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.personalOrderBoxFees {
+  margin-top: 10px;
+  padding-left: 30px;
+}
+
+.itemBoxRight {
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  border: 1px solid black;
+  width: 350px;
+  padding: 20px;
+  max-height: calc(100vh - 115px);
+  overflow-y: scroll;
+}
+
+.itemBoxRight h2 {
+  text-align: center;
+  font-size: 32px;
+}
