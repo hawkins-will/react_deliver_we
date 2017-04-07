@@ -1,6 +1,54 @@
 .bill {
-  margin-left: 500px;
+  position: fixed;
+  top: 60px;
+  right: 10px;
   border: 1px solid black;
-  width: 300px;
-  padding: 10px;
+  width: 350px;
+  padding: 20px;
+  max-height: calc(100vh - 115px);
+  overflow-y: scroll;
+}
+
+.bill h2 {
+  text-align: center;
+  font-size: 32px;
+}
+
+.bill h4 {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.billPersonalSection {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+}
+
+.billItem {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.billPersonalFees {
+  margin-top: 10px;
+  padding-left: 30px;
+}
+
+.billPersonalTotal {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.billPersonalSectionEnd {
+  width: 250px;
+}
+
+.billTotals {
+  margin-top: 20px;
+}
+
+.billPreTip {
+  color: grey;
 }

@@ -17,7 +17,7 @@ class Bill extends Component {
       let items = personalOrder.items.map( (item, index) => {
         personalTotal = personalTotal + item.price
         return(
-            <p>${item.price.toFixed(2)} {item.name}</p>
+            <p className="billItem">{item.name} <span>{item.price.toFixed(2)}</span></p>
         )
       })
       personalTotal = personalTotal + personalFee
@@ -26,28 +26,29 @@ class Bill extends Component {
       total = total + personalTotal
       return(
         <div>
-          <h4>{personalOrder.name}</h4>
-          <ul>
+          <h4>{personalOrder.name.toUpperCase()}</h4>
+          <div className="billPersonalSection">
             {items}
-            <ul>
-              ${personalFee.toFixed(2)} Personal Fee
-              <br />
-              ${personalTax.toFixed(2)} Tax
-              <br />
-              ${personalTip.toFixed(2)} Personal Tip
-            </ul>
-          </ul>
-          <p>Personal Total: ${personalTotal.toFixed(2)}</p>
+            <div className="billPersonalFees">
+              <p className="billItem">Personal Fee <span>{personalFee.toFixed(2)}</span></p>
+              <p className="billItem">Tax <span>{personalTax.toFixed(2)}</span></p>
+              <p className="billItem">Personal Tip <span>{personalTip.toFixed(2)}</span></p>
+            </div>
+            <p className="billPersonalTotal billItem">Personal Total <span>${personalTotal.toFixed(2)}</span></p>
+          </div>
+          <hr className="billPersonalSectionEnd" />
         </div>
       )
     })
     return(
       <div className="bill">
-        <h2>Bill:</h2>
+        <h2>Bill</h2>
+        <hr />
         {personalOrders}
-        **********
-        <p>Total pre-Tip: ${(total - 5).toFixed(2)}</p>
-        <p>Total with Tip: ${total.toFixed(2)}</p>
+        <div className="billTotals">
+          <p className="billItem billPreTip">Total <span>${(total - 5).toFixed(2)}</span></p>
+          <p className="billItem">Total with Tip <span>${total.toFixed(2)}</span></p>
+        </div>
       </div>
     )
   }

@@ -1,0 +1,24 @@
+.orderPage{
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.orderTitle{
+  font-size: 24px;
+}
+
+.cancelOrder{
+  font-size: 14px;
+  padding-left: 20px;
+  color: blue;
+}
+
+.cancelOrder:hover{
+  cursor: pointer;
+  color: purple;
+}
+
+.orderLeft{
+
+}

@@ -1,0 +1,27 @@
+.orderDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100px;
+  padding: 10px;
+  border-bottom: 2px solid grey;
+}
+
+.orderDiv a {
+  width: 300px;
+}
+
+.orderInfoContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.orderInfo {
+  padding-bottom: 10px;
+}
+
+.orderInfoTitle {
+  padding-bottom: 10px;
+  color: grey;
+}

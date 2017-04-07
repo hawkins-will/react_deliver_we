@@ -7,6 +7,7 @@ import {
 } from "react-router-dom"
 import PersonalOrderBox from "../PersonalOrders/PersonalOrderBox"
 import Bill from "../Bills/Bill"
+import "./Order.css"
 
 class Order extends Component {
   constructor(props){
@@ -39,16 +40,18 @@ class Order extends Component {
 
   render() {
     return(
-      <div>
-        <p>Order from {this.state.order.restaurant}</p>
-        <button onClick={ this.deleteOrder }>Delete</button>
-        <PersonalOrderBox
-          order={this.state.order} handlePersonalOrderDeleted={() => this.handlePersonalOrderDeleted()}
-         />
-
-         <Bill
+      <div className="orderPage">
+        <div className="orderLeft">
+          <p className="orderTitle">Order from "{this.state.order.restaurant}" <span className="cancelOrder" onClick={ this.deleteOrder }> cancel</span></p>
+          <PersonalOrderBox
+            order={this.state.order} handlePersonalOrderDeleted={() => this.handlePersonalOrderDeleted()}
+          />
+        </div>
+        <div className="orderRight">
+          <Bill
             order={this.state.order}
-         />
+          />
+        </div>
       </div>
     )
   }
