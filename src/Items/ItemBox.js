@@ -62,16 +62,7 @@ class ItemBox extends Component {
                   this.setState({items: newArray})
                 })
               }}>X</span>
-              <Link to={{
-                pathname,
-                state: {
-                  active: item,
-                  personalOrder: this.props.personalOrder,
-                  order: this.props.order
-                 }
-              }}>
-                {item.name}
-              </Link>
+              {item.name}
             </span>
             <span>{item.price.toFixed(2)}</span>
 
