@@ -1,0 +1,46 @@
+.menuItemBoxPersonal h2 {
+  font-size: 32px;
+  text-decoration: underline;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.personalOrderMenu {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.menuItemDiv {
+  width: 340px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  padding: 5px;
+  background: white;
+  background-color: rgba(235,235,235,1);
+  height: 75px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menuItemDiv:hover {
+  cursor: pointer;
+  border: 1px solid grey;
+  padding: 4px;
+}
+
+.personalMenuItemHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.personalMenuItemName {
+  color: blue;
+}
+
+.personalMenuDescription {
+  font-size: 12px;
+}

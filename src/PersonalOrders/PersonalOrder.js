@@ -81,7 +81,7 @@ class PersonalOrder extends Component {
     } else {
       return(
         <div className="personalOrderPage">
-          <p className="personalOrderTitle">{this.state.personalOrder.name}s Order <span className="cancelOrder" onClick={ this.deletePersonalOrder }> cancel</span></p>
+          <p className="personalOrderTitle">{this.state.personalOrder.name}'s Order <span className="cancelOrder" onClick={ this.deletePersonalOrder }> cancel</span></p>
           <form onSubmit={ this.updatePersonalOrder }>
             <input type="text" placeholder={ this.state.personalOrder.name } onChange={ this.handleNameChange } />
             <input type="submit" value="Update" />

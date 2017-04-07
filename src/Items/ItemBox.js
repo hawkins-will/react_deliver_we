@@ -89,7 +89,7 @@ class ItemBox extends Component {
           />
         </div>
         <div className="itemBoxRight">
-          <h2>{this.state.personalOrder.name.toUpperCase()}s Bill</h2>
+          <h2>{this.state.personalOrder.name}'s Bill</h2>
           <hr />
           {items}
           <div className="personalOrderBoxFees">
