@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./PersonalOrderForm.css"
 
 class PersonalOrderForm extends Component {
   constructor(props) {
@@ -27,10 +28,10 @@ class PersonalOrderForm extends Component {
 
   render(){
     return(
-      <div>
+      <div className="personalOrderForm">
         <form onSubmit={ this.handleSubmit }>
           <input type="text" placeholder="Name..." value={ this.state.name } onChange={ this.handleNameChange } />
-          <input type="submit" value="Join Order" />
+          <input className="button" type="submit" value="Join Order" />
         </form>
       </div>
     )

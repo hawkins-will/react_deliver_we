@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios"
 import { Link } from "react-router-dom"
 import PersonalOrderForm from "../PersonalOrders/PersonalOrderForm"
+import "./PersonalOrderBox.css"
 
 class PersonalOrderBox extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class PersonalOrderBox extends Component {
     let personalOrders = this.props.order.personalOrders.map( (personalOrder, index) => {
       let pathname = `/personal_order/${personalOrder.name}`
         return(
-          <li key={index}>
+          <p key={index}>
             <Link to={{
               pathname,
               state: {
@@ -44,16 +45,15 @@ class PersonalOrderBox extends Component {
             }}>
               {personalOrder.name}
             </Link>
-          </li>
+          </p>
         )
     })
     return(
-      <div>
-        <h2>PersonalOrders:</h2>
-          <ol>
+      <div className="personalOrderBox">
+        <h2>People In this Order:</h2>
+          <div className="personalOrdersList">
             {personalOrders}
-          </ol>
-
+          </div>
           <PersonalOrderForm
             order={this.state.order} handleNewPersonalOrder={(e) => this.handleNewPersonalOrder(e)}
           />
