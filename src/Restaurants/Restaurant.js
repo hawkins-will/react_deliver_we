@@ -3,6 +3,7 @@ import marked from "marked";
 import axios from "axios";
 import OrderForm from "../Orders/OrderForm"
 import MenuItemBox from "../MenuItems/MenuItemBox"
+import "./Restaurant.css"
 
 
 class Restaurant extends Component {
@@ -57,18 +58,21 @@ class Restaurant extends Component {
 
   render() {
     return(
-      <div>
-        <p>{this.state.restaurant.name} Page</p>
+      <div className="restaurantPage">
+        <div className="restaurantHeader">
+          <h1>{this.state.restaurant.name}</h1>
+          <p><span>Delivery Fee</span>${this.state.restaurant.deliveryFee.toFixed(2)}</p>
+          <p><span>Minimum</span>${this.state.restaurant.deliveryMin.toFixed(2)}</p>
+          <OrderForm
+            restaurant={this.state.restaurant}
+            handleOrderAdded={() => this.handleOrderAdded()}
+          />
+        </div>
         <form onSubmit={ this.updateRestaurant }>
           <input type="text" placeholder={ this.state.restaurant.name } onChange={ this.handleNameChange } />
           <input type="submit" value="Update" />
         </form>
         <button onClick={ this.deleteRestaurant }>Delete</button>
-
-        <OrderForm
-          restaurant={this.state.restaurant}
-          handleOrderAdded={() => this.handleOrderAdded()}
-        />
 
         <MenuItemBox
           restaurant={this.state.restaurant}

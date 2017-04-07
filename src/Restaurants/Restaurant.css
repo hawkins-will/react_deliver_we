@@ -1,0 +1,24 @@
+.restaurantPage {
+  padding: 10px;
+}
+
+.restaurantHeader {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.restaurantHeader h1 {
+  font-size: 50px;
+}
+
+.restaurantHeader p {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.restaurantHeader p span {
+  color: grey;
+}

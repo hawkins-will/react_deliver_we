@@ -26,7 +26,7 @@
   justify-content: space-between;
 }
 
-.menuItemDiv:hover {
+.personalMenuItemDiv:hover {
   cursor: pointer;
   border: 1px solid grey;
   padding: 4px;

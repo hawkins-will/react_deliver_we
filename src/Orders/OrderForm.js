@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./OrderForm.css"
 
 class OrderForm extends Component {
   constructor(props) {
@@ -33,9 +34,9 @@ class OrderForm extends Component {
 
   render(){
     return(
-      <button onClick={this.handleSubmit}>
-        New Order
-      </button>
+      <div className="createOrder">
+        <p onClick={this.handleSubmit}>New Order</p>
+      </div>
     )
   }
 }

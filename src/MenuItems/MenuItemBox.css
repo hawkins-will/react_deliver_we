@@ -1,9 +1,9 @@
-.menuItemBox {
-
-}
-
 .menuItemBox h2 {
-
+  font-size: 32px;
+  text-decoration: underline;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .menuItemDiv {
@@ -19,6 +19,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.menuContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
 }
 
 .menu {

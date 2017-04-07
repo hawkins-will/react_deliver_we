@@ -37,9 +37,11 @@ class MenuItemBox extends Component {
     })
     return(
       <div className="menuItemBox">
-        <h2>{restaurant.name} Menu:</h2>
+        <h2>Menu</h2>
+        <div className="menuContainer">
         <div className="menu">
           {menuItems}
+        </div>
         </div>
         <MenuItemForm
           restaurant={this.state.restaurant} handleNewMenuItem={(e) => this.handleNewMenuItem(e)}
