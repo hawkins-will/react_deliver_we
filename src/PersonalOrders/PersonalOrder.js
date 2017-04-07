@@ -82,10 +82,6 @@ class PersonalOrder extends Component {
       return(
         <div className="personalOrderPage">
           <p className="personalOrderTitle">{this.state.personalOrder.name}'s Order <span className="cancelOrder" onClick={ this.deletePersonalOrder }> cancel</span></p>
-          <form onSubmit={ this.updatePersonalOrder }>
-            <input type="text" placeholder={ this.state.personalOrder.name } onChange={ this.handleNameChange } />
-            <input type="submit" value="Update" />
-          </form>
 
           <ItemBox
             order={this.state.order} personalOrder={this.state.personalOrder} restaurant={this.state.restaurant} handleDeleteItem={(e) => this.handleDeleteItem(e)}

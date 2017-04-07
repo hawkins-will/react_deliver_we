@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios"
 import { Link } from "react-router-dom"
-import RestaurantForm from "./RestaurantForm"
 import "./RestaurantBox.css"
 
 class RestaurantBox extends Component {
@@ -63,9 +62,6 @@ class RestaurantBox extends Component {
         <div>
           {restaurants}
         </div>
-        <RestaurantForm
-          handleNewRestaurant={(e) => this.handleNewRestaurant(e)}
-        />
       </div>
     )
   }

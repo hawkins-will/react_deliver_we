@@ -68,11 +68,6 @@ class Restaurant extends Component {
             handleOrderAdded={() => this.handleOrderAdded()}
           />
         </div>
-        <form onSubmit={ this.updateRestaurant }>
-          <input type="text" placeholder={ this.state.restaurant.name } onChange={ this.handleNameChange } />
-          <input type="submit" value="Update" />
-        </form>
-        <button onClick={ this.deleteRestaurant }>Delete</button>
 
         <MenuItemBox
           restaurant={this.state.restaurant}
