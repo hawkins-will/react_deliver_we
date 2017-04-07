@@ -74,9 +74,24 @@ class App extends Component {
 
           <Route exact path="/"
             render={() =>
-              <div>
-                  <Link to="/orders">Orders</Link>
-                  <Link to="/restaurants">Restaurants</Link>
+              <div className="homePage">
+              <div className="mainPhotoContainer">
+                <img className="mainPhoto" src={"berries.jpg"} alt="Food Image" />
+              </div>
+
+              <div className="mainLinks">
+                  <Link to="/orders">
+                    <span className="mainLink">
+                      JOIN EXISTING ORDERS
+                    </span>
+                  </Link>
+                    <p>OR</p>
+                  <Link to="/restaurants">
+                    <span className="mainLink">
+                      START A NEW ONE
+                    </span>
+                  </Link>
+                </div>
               </div>
             }
           />

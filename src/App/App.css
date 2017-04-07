@@ -49,10 +49,10 @@ table {
 }
 
 /* CSS Begins Here */
-
 html {
   margin-left: 0px;
   padding: 0px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -79,10 +79,6 @@ nav {
   height: 52px;
 }
 
-.logo:hover {
-  background-color: rgba(190,105,0,1);
-}
-
 .links{
   display: flex;
   flex-direction: row;
@@ -90,6 +86,7 @@ nav {
 
 .links a {
   text-decoration: none;
+  color: white;
 }
 
 .link {
@@ -103,4 +100,51 @@ nav {
 
 .link:hover {
   background-color: rgba(190,105,0,1);
+}
+
+.homePage {
+  width: 100vw;
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainPhotoContainer {
+  width: 100vw;
+  height: 350px;
+  overflow: hidden;
+}
+
+.mainPhoto{
+  min-width: 1400px;
+  width: 100vw;
+}
+
+.mainLinks {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 250px;
+  height: calc(100vh - 400px);
+  width: 800px;
+}
+
+.mainLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: rgba(120, 211,	249, 1);
+}
+
+.mainLinks a {
+  text-decoration: none;
+  color: white;
+}
+
+.mainLink:hover {
+  background-color: rgba(90, 160,	186, 1);
 }
