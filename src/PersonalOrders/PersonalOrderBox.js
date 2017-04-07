@@ -12,13 +12,12 @@ class PersonalOrderBox extends Component {
     this.state = {
       personalOrders: personalOrders,
       order: order
-     };
+     }
   }
 
   handleNewPersonalOrder(newPersonalOrders){
     let order = this.state.order
     axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newPersonalOrders }).then( res => {
-      console.log("Updating...");
       this.setState( {personalOrders: newPersonalOrders });
     })
     .catch(err => {
