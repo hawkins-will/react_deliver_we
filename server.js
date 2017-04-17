@@ -5,6 +5,7 @@ const mongoose = require('./db/connection.js');
 const bodyParser = require('body-parser');
 const Restaurant = require("./model/restaurants");
 const Order = require("./model/orders");
+const PastOrder = require("./model/pastOrders");
 // const PersonalOrder = require("./model/personalOrders");
 
 const app = express();
@@ -121,6 +122,24 @@ router.route("/restaurants/:restaurant_id")
         res.json({ message: "Order has been deleted" })
       })
     })
+
+  router.route("/past_orders")
+    .get(function(req, res) {
+      PastOrder.find(function(err, orders) {
+        if (err)
+        res.send(err);
+        res.json(orders)
+      });
+    })
+    .post(function(req, res) {
+      var order = new PastOrder();
+      order.order = req.body.order;
+      order.save(function(err, order) {
+        if (err)
+        res.send(err);
+        res.json(order);
+      });
+    });
 
 app.use("/api", router);
 

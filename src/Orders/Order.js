@@ -17,6 +17,7 @@ class Order extends Component {
       restaurant: undefined
     }
     this.deleteOrder = this.deleteOrder.bind(this);
+    this.sendOrder = this.sendOrder.bind(this);
   }
   rawMarkup() {
     let rawMarkup = marked(this.props.children.toString());
@@ -31,6 +32,25 @@ class Order extends Component {
       console.error(err);
     }).then(() => {
       this.props.location.props.handleOrderDeleted()
+    })
+  }
+
+  sendOrder(){
+    let restaurant = this.state.restaurant
+    let order = this.state.order
+    axios.post("http://localhost:3001/api/past_orders", { order }).then( res => {
+      this.setState( {data: res });
+    })
+    .catch(err => {
+      console.log(err)
+    }).then(() => {
+      axios.delete(`http://localhost:3001/api/orders/${this.state.order._id}`, { restaurant: restaurant }).then( res => {
+      })
+      .catch(err => {
+        console.error(err);
+      }).then(() => {
+        this.props.location.props.handleOrderDeleted()
+      })
     })
   }
 
