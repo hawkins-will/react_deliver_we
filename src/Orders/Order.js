@@ -40,11 +40,19 @@ class Order extends Component {
     this.props.location.props.handlePersonalOrderDeleted()
   }
 
+  showModal(e) {
+    document.getElementById('myModal').style.display='flex'
+  }
+
+  closeModal(e){
+    document.getElementById('myModal').style.display='none'
+  }
+
   render() {
     return(
       <div className="orderPage">
         <div className="orderLeft">
-          <p className="orderTitle">Order from "{this.state.order.restaurant}" for {this.state.order.time} <span className="cancelOrder" onClick={ this.deleteOrder }> cancel</span></p>
+          <p className="orderTitle">Order from "{this.state.order.restaurant}" for {this.state.order.time} <span className="cancelOrder" onClick={ this.showModal }> cancel</span></p>
           <PersonalOrderBox
             order={this.state.order} handlePersonalOrderDeleted={() => this.handlePersonalOrderDeleted()}
           />
@@ -53,6 +61,15 @@ class Order extends Component {
           <Bill
             order={this.state.order}
           />
+        </div>
+        <div id="myModal" className="modal">
+          <div className="modalContent">
+            <span className="close" onClick={this.closeModal}>&times;</span>
+            <div className="innerModal">
+            <p>Are you sure you want to cancel this order?</p>
+            <div className="confirmButton" onClick={ this.deleteOrder }>Confirm</div>
+            </div>
+          </div>
         </div>
       </div>
     )
