@@ -112,7 +112,6 @@ class OrderForm extends Component {
     let availableHours = hoursArray.filter((val) => {
       return val >= hour
     })
-    console.log(availableHours);
     let hourOptions = availableHours.map( (num, index) => {
       if (num > 12) {
         var newNum = num - 12
@@ -144,7 +143,7 @@ class OrderForm extends Component {
                   <option value="15">15</option>
                   <option value="30">30</option>
                   <option value="45">45</option>
-                  <option value="50">50</option>
+                  <option value="37">37</option>
                 </select>
 
                 <input className="button" type="submit" value="Start Order" />

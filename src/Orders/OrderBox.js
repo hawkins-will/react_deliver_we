@@ -57,11 +57,22 @@ class OrderBox extends Component {
         </div>
       )
     })
-    return(
-      <div>
-        {orders}
-      </div>
-    )
+    if (orders.length === 0) {
+      return(
+        <div className="noOrders">
+          <p>No Orders are Currently in Progress</p>
+          <Link to="/restaurants">
+            <div>Start One</div>
+          </Link>
+        </div>
+      )
+    } else {
+      return(
+        <div>
+          {orders}
+        </div>
+      )
+    }
   }
 }
 

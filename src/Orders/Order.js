@@ -44,7 +44,7 @@ class Order extends Component {
     return(
       <div className="orderPage">
         <div className="orderLeft">
-          <p className="orderTitle">Order from "{this.state.order.restaurant}" <span className="cancelOrder" onClick={ this.deleteOrder }> cancel</span></p>
+          <p className="orderTitle">Order from "{this.state.order.restaurant}" for {this.state.order.time} <span className="cancelOrder" onClick={ this.deleteOrder }> cancel</span></p>
           <PersonalOrderBox
             order={this.state.order} handlePersonalOrderDeleted={() => this.handlePersonalOrderDeleted()}
           />

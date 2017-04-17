@@ -25,3 +25,33 @@
   padding-bottom: 10px;
   color: grey;
 }
+
+.noOrders{
+  width: 100vw;
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.noOrders a {
+  text-decoration: none;
+}
+
+.noOrders div{
+  height: 50px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+  margin-top: 20px;
+  background-color: rgba(120, 211,	249, 1);
+}
+
+.noOrders div:hover {
+  background-color: rgba(90, 160,	186, 1);
+}
