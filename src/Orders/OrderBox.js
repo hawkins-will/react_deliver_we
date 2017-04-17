@@ -42,6 +42,10 @@ class OrderBox extends Component {
           <div className="orderInfoContainer">
             <img />
             <div className="orderInfo">
+              <p className="orderInfoTitle">Will Be Placed At</p>
+              <p>{order.time}</p>
+            </div>
+            <div className="orderInfo">
               <p className="orderInfoTitle">Delivery Fee</p>
               <p>${order.deliveryFee.toFixed(2)}</p>
             </div>

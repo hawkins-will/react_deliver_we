@@ -1,11 +1,65 @@
-.createOrder {
+.createOrder .newOrder {
   display: flex;
   justify-content: center;
   align-items: center;
   color: blue;
 }
 
-.createOrder:hover {
+.createOrder .newOrder:hover {
   color: purple;
   cursor: pointer;
+}
+
+.modal {
+ position: fixed;
+ display: none;
+ justify-content: center;
+ align-items: center;
+ z-index: 3;
+ left: 0;
+ top: 0;
+ padding: 10px 0;
+ min-width: 400px;
+ width: 100vw;
+ min-height: 400px;
+ height: 100vh;
+ overflow: auto;
+ background-color: rgba(0,0,0,0.3);
+ border: 1px solid black;
+}
+
+.modalContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 200px;
+  width: 500px;
+  box-shadow: 2px 2px 2px black;
+  background: white;
+}
+
+.innerModal {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  height: 170px;
+  width: 500px;
+  padding-bottom: 30px;
+}
+
+.close {
+  width: 500px;
+  text-align: right;
+  padding-right: 15px;
+  font-size: 30px;
+  color: rgba(50,50,50,1);
+  transition: 0.3s;
+}
+
+.close:hover, .close:focus {
+ color: #bbb;
+ text-decoration: none;
+ cursor: pointer;
 }

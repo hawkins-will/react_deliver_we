@@ -94,6 +94,7 @@ router.route("/restaurants/:restaurant_id")
       order.deliveryFee = req.body.deliveryFee;
       order.deliveryMin = req.body.deliveryMin;
       order.tax = req.body.tax;
+      order.time = req.body.time;
       order.save(function(err, order) {
         if (err)
         res.send(err);
@@ -102,6 +103,13 @@ router.route("/restaurants/:restaurant_id")
     });
 
   router.route("/orders/:order_id")
+    .get(function(req, res) {
+      Order.findById(req.params.order_id, function(err, order) {
+        if (err)
+        res.send(err);
+        res.json(order)
+      });
+    })
     .put(function(req, res) {
       Order.findById(req.params.order_id, function(err, order) {
         if (err)
