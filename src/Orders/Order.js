@@ -67,6 +67,7 @@ class Order extends Component {
             <span className="close" onClick={this.closeModal}>&times;</span>
             <div className="innerModal">
             <p>Are you sure you want to cancel this order?</p>
+            <p>This will cancel the entire order, not just yours!</p>
             <div className="confirmButton" onClick={ this.deleteOrder }>Confirm</div>
             </div>
           </div>

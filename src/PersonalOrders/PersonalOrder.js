@@ -72,6 +72,14 @@ class PersonalOrder extends Component {
     })
   }
 
+  showModal(e) {
+    document.getElementById('myModal').style.display='flex'
+  }
+
+  closeModal(e){
+    document.getElementById('myModal').style.display='none'
+  }
+
   render() {
     if (this.state.restaurant === undefined) {
       console.log("Not Yet Loaded");
@@ -81,7 +89,7 @@ class PersonalOrder extends Component {
     } else {
       return(
         <div className="personalOrderPage">
-          <p className="personalOrderTitle">{this.state.personalOrder.name}'s Order <span className="cancelOrder" onClick={ this.deletePersonalOrder }> cancel</span></p>
+          <p className="personalOrderTitle">{this.state.personalOrder.name}s Order <span className="cancelOrder" onClick={ this.showModal }> cancel</span></p>
           <form onSubmit={ this.updatePersonalOrder }>
             <input type="text" placeholder={ this.state.personalOrder.name } onChange={ this.handleNameChange } />
             <input type="submit" value="Update" />
@@ -90,6 +98,17 @@ class PersonalOrder extends Component {
           <ItemBox
             order={this.state.order} personalOrder={this.state.personalOrder} restaurant={this.state.restaurant} handleDeleteItem={(e) => this.handleDeleteItem(e)}
           />
+
+          <div id="myModal" className="modal">
+            <div className="modalContent">
+              <span className="close" onClick={this.closeModal}>&times;</span>
+              <div className="innerModal">
+              <p>Are you sure you want to cancel this personal order?</p>
+              <p>This will only cancel your order</p>
+              <div className="confirmButton" onClick={ this.deletePersonalOrder }>Confirm</div>
+              </div>
+            </div>
+          </div>
         </div>
       )
     }
