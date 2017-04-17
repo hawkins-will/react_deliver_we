@@ -8,7 +8,6 @@ import {
 import PersonalOrderBox from "../PersonalOrders/PersonalOrderBox"
 import Bill from "../Bills/Bill"
 import "./Order.css"
-var schedule = require('node-schedule');
 
 class Order extends Component {
   constructor(props){

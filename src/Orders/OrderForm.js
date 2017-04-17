@@ -6,6 +6,8 @@ var schedule = require('node-schedule');
 class OrderForm extends Component {
   constructor(props) {
     super(props);
+    var date = new Date()
+    var hour = date.getHours()
     this.state = {
       restaurant: this.props.restaurant,
       restaurantName: this.props.restaurant.name,
@@ -13,7 +15,7 @@ class OrderForm extends Component {
       deliveryFee: this.props.restaurant.deliveryFee,
       deliveryMin: this.props.restaurant.deliveryMin,
       tax: this.props.restaurant.tax,
-      hour: "6",
+      hour: hour,
       minute: "00"
      };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -104,6 +106,25 @@ class OrderForm extends Component {
 
 
   render(){
+    var date = new Date()
+    var hour = date.getHours()
+    let hoursArray = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,18, 19, 20, 21, 22, 23, 24]
+    let availableHours = hoursArray.filter((val) => {
+      return val >= hour
+    })
+    console.log(availableHours);
+    let hourOptions = availableHours.map( (num, index) => {
+      if (num > 12) {
+        var newNum = num - 12
+        return(
+          <option value={num.toString()}>{newNum.toString()}</option>
+        )
+      } else {
+        return(
+          <option value={num.toString()}>{num.toString()}</option>
+        )
+      }
+    })
     return(
       <div className="createOrder">
         <p className="newOrder" onClick={this.showModal}>New Order</p>
@@ -115,25 +136,7 @@ class OrderForm extends Component {
             <p>When should we place this order?</p>
               <form onSubmit={ this.handleSubmit }>
                 <select name="hour" onChange={ this.handleHourChange } >
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                  <option value="13">1</option>
-                  <option value="14">2</option>
-                  <option value="15">3</option>
-                  <option value="16">4</option>
-                  <option value="17">5</option>
-                  <option value="18">6</option>
-                  <option value="19">7</option>
-                  <option value="20">8</option>
-                  <option value="21">9</option>
-                  <option value="22">10</option>
-                  <option value="23">11</option>
-                  <option value="24">12</option>
+                  {hourOptions}
                 </select>
 
                 <select name="minute" onChange={ this.handleMinuteChange }>
