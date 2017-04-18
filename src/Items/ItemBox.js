@@ -61,34 +61,34 @@ class ItemBox extends Component {
             <div className="modalContent">
               <span className="close" onClick={() => this.closeModal(index) }>&times;</span>
               <div className="innerModal">
-              <p>Remove <span className="modalMenuItem">{item.name}</span> from your order?</p>
-              <div className="confirmButton" onClick={ () => {
-                let order = this.state.order;
-                let personalOrder = this.state.personalOrder;
-                let itemId = item._id;
-                let newArray = personalOrder.items.filter((personalOrderItem) => {
-                  return personalOrderItem._id !== itemId
-                })
-                personalOrder.items = newArray;
-                let personalId = personalOrder._id;
-                let newPersonalOrdersArray = order.personalOrders.filter((personalOrder) => {
-                  return personalOrder._id !== personalId
-                })
-                newPersonalOrdersArray.push(personalOrder)
+                <p>Remove <span className="modalMenuItem">{item.name}</span> from your order?</p>
+                <div className="confirmButton" onClick={ () => {
+                  let order = this.state.order;
+                  let personalOrder = this.state.personalOrder;
+                  let itemId = item._id;
+                  let newArray = personalOrder.items.filter((personalOrderItem) => {
+                    return personalOrderItem._id !== itemId
+                  })
+                  personalOrder.items = newArray;
+                  let personalId = personalOrder._id;
+                  let newPersonalOrdersArray = order.personalOrders.filter((personalOrder) => {
+                    return personalOrder._id !== personalId
+                  })
+                  newPersonalOrdersArray.push(personalOrder)
 
-                axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newPersonalOrdersArray }).then( res => {
-                  console.log("Item Deleted");
-                })
-                .catch(err => {
-                  console.error(err);
-                }).then(() => {
-                  this.setState({items: newArray})
-                })
-                this.closeModal(index)
-              }}>Confirm</div>
+                  axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newPersonalOrdersArray }).then( res => {
+                    console.log("Item Deleted");
+                  })
+                  .catch(err => {
+                    console.error(err);
+                  }).then(() => {
+                    this.setState({items: newArray})
+                  })
+                  this.closeModal(index)
+                }}>Confirm</div>
+                </div>
               </div>
             </div>
-          </div>
           </div>
         )
     })
