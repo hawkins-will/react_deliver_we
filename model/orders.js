@@ -21,6 +21,7 @@ var OrderSchema = new Schema({
   deliveryFee: Number,
   deliveryMin: Number,
   tax: Number,
+  logo: String,
   personalOrders: [PersonalOrderSchema]
 });
 

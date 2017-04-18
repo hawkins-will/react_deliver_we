@@ -14,6 +14,7 @@ var RestaurantSchema = new Schema({
   deliveryFee: Number,
   deliveryMin: Number,
   tax: Number,
+  logo: String,
   menuItems: [MenuItemSchema]
 });
 

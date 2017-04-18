@@ -15,6 +15,7 @@ class OrderForm extends Component {
       deliveryFee: this.props.restaurant.deliveryFee,
       deliveryMin: this.props.restaurant.deliveryMin,
       tax: this.props.restaurant.tax,
+      logo: this.props.restaurant.logo,
       hour: hour,
       minute: "00"
      };

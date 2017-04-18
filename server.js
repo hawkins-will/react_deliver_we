@@ -43,6 +43,7 @@ router.route("/restaurants")
     restaurant.deliveryFee = req.body.deliveryFee;
     restaurant.deliveryMin = req.body.deliveryMin;
     restaurant.tax = req.body.tax;
+    restaurant.logo = req.body.logo;
     restaurant.save(function(err, restaurant) {
       if (err)
       res.send(err);
@@ -62,7 +63,7 @@ router.route("/restaurants/:restaurant_id")
     Restaurant.findById(req.params.restaurant_id, function(err, restaurant) {
       if (err)
       res.send(err);
-      (req.body.name) ? restaurant.name = req.body.name : null;
+      (req.body.logo) ? restaurant.logo = req.body.logo : null;
       (req.body.menuItems) ? restaurant.menuItems = req.body.menuItems : null;
       restaurant.save(function(err) {
         if (err)
@@ -94,6 +95,7 @@ router.route("/restaurants/:restaurant_id")
       order.deliveryFee = req.body.deliveryFee;
       order.deliveryMin = req.body.deliveryMin;
       order.tax = req.body.tax;
+      order.logo = req.body.logo;
       order.time = req.body.time;
       order.save(function(err, order) {
         if (err)

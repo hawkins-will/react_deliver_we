@@ -6,14 +6,15 @@ import MenuItemBox from "../MenuItems/MenuItemBox"
 import "./Restaurant.css"
 
 
+
 class Restaurant extends Component {
   constructor(props){
     super(props)
     this.state = {
       restaurant: this.props.location.state.active,
-      name: undefined
+      logo: undefined
     }
-    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleLogoChange = this.handleLogoChange.bind(this);
     this.updateRestaurant = this.updateRestaurant.bind(this);
     this.deleteRestaurant = this.deleteRestaurant.bind(this);
   }
@@ -23,23 +24,21 @@ class Restaurant extends Component {
   }
 
 
-  handleNameChange(e) {
-    this.setState( { name: e.target.value });
+  handleLogoChange(e) {
+    this.setState( { logo: e.target.value });
   }
 
   updateRestaurant(e) {
     e.preventDefault();
-    if (this.state.name) {
-      let name = this.state.name.trim();
-    }
-    axios.put(`http://localhost:3001/api/restaurants/${this.state.restaurant._id}`, { name: name }).then( res => {
+    let logo = this.state.logo.trim();
+    axios.put(`http://localhost:3001/api/restaurants/${this.state.restaurant._id}`, { logo: logo }).then( res => {
       this.setState( {data: res });
     })
     .catch(err => {
       console.log(err)
     })
     .then(() => {
-      this.setState({ name: undefined })
+      this.setState({ logo: undefined })
     })
   }
 
@@ -69,7 +68,7 @@ class Restaurant extends Component {
           />
         </div>
         <form onSubmit={ this.updateRestaurant }>
-          <input type="text" placeholder={ this.state.restaurant.name } onChange={ this.handleNameChange } />
+          <input type="text" placeholder={ this.state.restaurant.logo } onChange={ this.handleLogoChange } />
           <input type="submit" value="Update" />
         </form>
         <button onClick={ this.deleteRestaurant }>Delete</button>
