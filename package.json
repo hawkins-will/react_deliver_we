@@ -20,7 +20,7 @@
     "react-scripts": "0.9.5"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production MONGO_URL=mongodb://willhawkins:scourge123@ds163010.mlab.com:63010/heroku_bspfb4xt node index.js",
+    "start": "cross-env NODE_ENV=production MONGO_URL=mongodb://heroku_bspfb4xt:8m3n67lp508v8ssqdq7pl8juge@ds163010.mlab.com:63010/heroku_bspfb4xt node index.js",
     "start-dev": "nf start -p 3000",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
