@@ -17,11 +17,11 @@ class MenuItemBoxPersonal extends Component {
   }
 
   showModal(index) {
-    document.getElementById(index).style.display='flex'
+    document.getElementById("add" + index).style.display='flex'
   }
 
   closeModal(index){
-    document.getElementById(index).style.display='none'
+    document.getElementById("add" + index).style.display='none'
   }
 
   render() {
@@ -34,7 +34,7 @@ class MenuItemBoxPersonal extends Component {
             <p className="personalMenuDescription">{menuItem.description}</p>
             <p>{index}</p>
           </div>
-          <div id={index.toString()} className="modal">
+          <div id={"add" + index.toString()} className="modal">
             <div className="modalContent">
               <span className="close" onClick={() => this.closeModal(index) }>&times;</span>
               <div className="innerModal">

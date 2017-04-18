@@ -28,6 +28,14 @@ class ItemBox extends Component {
     })
   }
 
+  showModal(index) {
+    document.getElementById("remove" + index).style.display='flex'
+  }
+
+  closeModal(index){
+    document.getElementById("remove" + index).style.display='none'
+  }
+
   render() {
     let personalTotal = 0.00
     let personalTip = 5/this.props.order.personalOrders.length
@@ -37,9 +45,24 @@ class ItemBox extends Component {
       let pathname = `/item/${item.name}`
       personalTotal = personalTotal + item.price
         return(
+          <div>
           <p className="personalOrderItem" key={index}>
             <span>
-              <span className="deleteItem" onClick={() => {
+              <span className="deleteItem" onClick={() => this.showModal(index) }>
+              X
+              </span>
+              {item.name}
+            </span>
+            <span>{item.price.toFixed(2)}</span>
+
+
+          </p>
+          <div id={"remove" + index.toString()} className="modal">
+            <div className="modalContent">
+              <span className="close" onClick={() => this.closeModal(index) }>&times;</span>
+              <div className="innerModal">
+              <p>Remove <span className="modalMenuItem">{item.name}</span> from your order?</p>
+              <div className="confirmButton" onClick={ () => {
                 let order = this.state.order;
                 let personalOrder = this.state.personalOrder;
                 let itemId = item._id;
@@ -61,13 +84,12 @@ class ItemBox extends Component {
                 }).then(() => {
                   this.setState({items: newArray})
                 })
-              }}>X</span>
-              {item.name}
-            </span>
-            <span>{item.price.toFixed(2)}</span>
-
-
-          </p>
+                this.closeModal(index)
+              }}>Confirm</div>
+              </div>
+            </div>
+          </div>
+          </div>
         )
     })
     let personalTax = personalTotal*(this.props.order.tax/100)
@@ -80,7 +102,7 @@ class ItemBox extends Component {
           />
         </div>
         <div className="itemBoxRight">
-          <h2>{this.state.personalOrder.name}'s Bill</h2>
+          <h2>{this.state.personalOrder.name}s Bill</h2>
           <hr />
           {items}
           <div className="personalOrderBoxFees">
