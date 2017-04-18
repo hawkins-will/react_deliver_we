@@ -34,7 +34,6 @@ class MenuItemBoxPersonal extends Component {
           <div className="personalMenuItemDiv" key={index} onClick={ () => this.showModal(index) }>
             <p className="personalMenuItemHeader"><span className="personalMenuItemName">{menuItem.name}</span> ${menuItem.price.toFixed(2)}</p>
             <p className="personalMenuDescription">{menuItem.description}</p>
-            <p>{index}</p>
           </div>
           <div id={"add" + index.toString()} className="modal">
             <div className="modalContent">
