@@ -114,9 +114,11 @@ class ItemBox extends Component {
     return(
       <div className="itemBox">
         <div className="itemBoxLeft">
-          <MenuItemBoxPersonal
-            restaurant={this.state.restaurant} order={this.state.order} personalOrder={this.state.personalOrder} handleNewItem={(e) => this.handleNewItem(e)}
-          />
+          <div className="leftPersonalMenu">
+            <MenuItemBoxPersonal
+              restaurant={this.state.restaurant} order={this.state.order} personalOrder={this.state.personalOrder} handleNewItem={(e) => this.handleNewItem(e)}
+            />
+          </div>
         </div>
         <div className="itemBoxRight">
           <h2>{this.state.personalOrder.name}s Bill</h2>
