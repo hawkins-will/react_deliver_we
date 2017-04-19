@@ -1,20 +1,37 @@
+.restaurantBoxHeader{
+  height: 100px;
+  background: rgba(0,0,0,.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+
 .restaurantDiv {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   height: 100px;
-  padding: 10px;
+  padding: 10px 50px;
   border-bottom: 2px solid grey;
 }
 
 .restaurantDiv a {
   width: 300px;
+  margin-left: 50px;
+  font-size: 24px;
 }
 
-.restaurantInfoContainer {
+.restaurantBoxLogo {
+  height: 100px;
+  width: 100px;
+}
+
+.restaurantInfoName {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
 }
 
 .restaurantInfo {
