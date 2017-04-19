@@ -22,3 +22,8 @@
 .restaurantHeader p span {
   color: grey;
 }
+
+.restaurantLogo {
+  height: 50px;
+  width: 50px;
+}

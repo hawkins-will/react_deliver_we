@@ -59,6 +59,7 @@ class Restaurant extends Component {
     return(
       <div className="restaurantPage">
         <div className="restaurantHeader">
+          <img className="restaurantLogo" src={this.state.restaurant.logo} alt={this.state.restaurant.name} />
           <h1>{this.state.restaurant.name}</h1>
           <p><span>Delivery Fee</span>${this.state.restaurant.deliveryFee.toFixed(2)}</p>
           <p><span>Minimum</span>${this.state.restaurant.deliveryMin.toFixed(2)}</p>

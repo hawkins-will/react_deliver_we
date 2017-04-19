@@ -12,6 +12,7 @@ const app = express();
 const router = express.Router();
 
 const port = process.env.API_PORT || 3001;
+console.log(port);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
