@@ -4,6 +4,7 @@
 
 .personalOrderTitle{
   font-size: 24px;
+  margin-top: 15px;
   margin-bottom: 20px;
   width: calc(100vw - 400px);
   text-align: center;

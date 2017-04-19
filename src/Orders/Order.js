@@ -53,6 +53,7 @@ class Order extends Component {
       <div className="orderPage">
         <div className="orderLeft">
           <p className="orderTitle">Order from "{this.state.order.restaurant}" for {this.state.order.time} <span className="cancelOrder" onClick={ this.showModal }> cancel</span></p>
+          <img className="orderLogo" src={this.state.order.logo} alt={this.state.order.name + "logo"} />
           <PersonalOrderBox
             order={this.state.order} handlePersonalOrderDeleted={() => this.handlePersonalOrderDeleted()}
           />
