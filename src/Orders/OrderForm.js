@@ -109,7 +109,7 @@ class OrderForm extends Component {
   render(){
     var date = new Date()
     var hour = date.getHours()
-    let hoursArray = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,18, 19, 20, 21, 22, 23, 24]
+    let hoursArray = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,18, 19, 20, 21, 22, 23]
     let availableHours = hoursArray.filter((val) => {
       return val >= hour
     })
@@ -127,7 +127,7 @@ class OrderForm extends Component {
     })
     return(
       <div className="createOrder">
-        <p className="newOrder" onClick={this.showModal}>New Order</p>
+        <div className="newOrder" onClick={this.showModal}><p>New Order</p></div>
 
         <div id="myModal" className="modal">
           <div className="modalContent">
@@ -144,7 +144,6 @@ class OrderForm extends Component {
                   <option value="15">15</option>
                   <option value="30">30</option>
                   <option value="45">45</option>
-                  <option value="37">37</option>
                 </select>
 
                 <input className="button" type="submit" value="Start Order" />

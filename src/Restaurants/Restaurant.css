@@ -5,12 +5,20 @@
 .restaurantHeader {
   display: flex;
   justify-content: space-between;
-  height: 50px;
-  margin-bottom: 20px;
+  align-items: center;
+  height: 200px;
+  margin: 25px;
 }
 
 .restaurantHeader h1 {
   font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.restaurantHeader h1 img {
+  margin-right: 50px;
 }
 
 .restaurantHeader p {
@@ -21,9 +29,10 @@
 
 .restaurantHeader p span {
   color: grey;
+  margin-bottom: 10px;
 }
 
 .restaurantLogo {
-  height: 50px;
-  width: 50px;
+  height: 200px;
+  max-width: 200px;
 }

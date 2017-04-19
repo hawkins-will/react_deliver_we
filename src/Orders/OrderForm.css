@@ -2,10 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: blue;
+  color: white;
+  width: 125px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgba(120, 211,	249, 1);
 }
 
 .createOrder .newOrder:hover {
-  color: purple;
+  background-color: rgba(90, 160,	186, 1);
   cursor: pointer;
 }
