@@ -29,30 +29,30 @@ class OrderBox extends Component {
       let pathname = `/order/${order.restaurant}`
       return(
         <div className="orderDiv" key={index}>
-          <Link to={{
-            pathname,
-            state: {active: order},
-            props: {
-              handleOrderDeleted: () => this.handleOrderDeleted(),
-              handlePersonalOrderDeleted: () => this.handlePersonalOrderDeleted()
-            }
-          }}>
-            <p>Order from "{order.restaurant}"</p>
-          </Link>
-          <div className="orderInfoContainer">
-            <img />
-            <div className="orderInfo">
-              <p className="orderInfoTitle">Will Be Placed At</p>
-              <p>{order.time}</p>
-            </div>
-            <div className="orderInfo">
-              <p className="orderInfoTitle">Delivery Fee</p>
-              <p>${order.deliveryFee.toFixed(2)}</p>
-            </div>
-            <div className="orderInfo">
-              <p className="orderInfoTitle">Minimum</p>
-              <p>${order.deliveryMin.toFixed(2)}</p>
-            </div>
+          <div className="orderInfoName">
+            <img className="orderBoxLogo" src={order.logo} alt={order.name}/>
+            <Link to={{
+              pathname,
+              state: {active: order},
+              props: {
+                handleOrderDeleted: () => this.handleOrderDeleted(),
+                handlePersonalOrderDeleted: () => this.handlePersonalOrderDeleted()
+              }
+            }}>
+              <p>Order from "{order.restaurant}"</p>
+            </Link>
+          </div>
+          <div className="orderInfo">
+            <p className="orderInfoTitle">Will Be Placed At</p>
+            <p>{order.time}</p>
+          </div>
+          <div className="orderInfo">
+            <p className="orderInfoTitle">Delivery Fee</p>
+            <p>${order.deliveryFee.toFixed(2)}</p>
+          </div>
+          <div className="orderInfo">
+            <p className="orderInfoTitle">Minimum</p>
+            <p>${order.deliveryMin.toFixed(2)}</p>
           </div>
         </div>
       )
@@ -69,6 +69,9 @@ class OrderBox extends Component {
     } else {
       return(
         <div>
+          <div className="restaurantBoxHeader">
+            <p>Join One of these Orders Already in Progress</p>
+          </div>
           {orders}
         </div>
       )

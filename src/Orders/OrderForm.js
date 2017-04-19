@@ -40,6 +40,7 @@ class OrderForm extends Component {
     let restaurantId = this.state.restaurantId.trim();
     let deliveryFee = this.state.deliveryFee;
     let deliveryMin = this.state.deliveryMin;
+    let logo = this.state.logo;
     let tax = this.state.tax;
     var date = new Date()
     var year = date.getFullYear()
@@ -63,7 +64,7 @@ class OrderForm extends Component {
       time = hour + ":" + minute + " am"
     }
 
-    axios.post("http://localhost:3001/api/orders", { restaurant: restaurantName, restaurantId, deliveryFee, deliveryMin, tax, time }).then( res => {
+    axios.post("http://localhost:3001/api/orders", { restaurant: restaurantName, restaurantId, deliveryFee, deliveryMin, tax, time, logo }).then( res => {
       this.setState( {data: res });
     })
     .catch(err => {
