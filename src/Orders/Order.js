@@ -14,7 +14,9 @@ class Order extends Component {
     super(props)
     this.state = {
       order: this.props.location.state.active,
-      restaurant: undefined
+      restaurant: undefined,
+      hour: "6",
+      minute: "00"
     }
     this.deleteOrder = this.deleteOrder.bind(this);
   }
@@ -38,11 +40,20 @@ class Order extends Component {
     this.props.location.props.handlePersonalOrderDeleted()
   }
 
+  showModal(e) {
+    document.getElementById('myModal').style.display='flex'
+  }
+
+  closeModal(e){
+    document.getElementById('myModal').style.display='none'
+  }
+
   render() {
     return(
       <div className="orderPage">
         <div className="orderLeft">
-          <p className="orderTitle">Order from "{this.state.order.restaurant}" <span className="cancelOrder" onClick={ this.deleteOrder }> cancel</span></p>
+          <p className="orderTitle">Order from "{this.state.order.restaurant}" for {this.state.order.time} <span className="cancelOrder" onClick={ this.showModal }> cancel</span></p>
+          <img className="orderLogo" src={this.state.order.logo} alt={this.state.order.name + "logo"} />
           <PersonalOrderBox
             order={this.state.order} handlePersonalOrderDeleted={() => this.handlePersonalOrderDeleted()}
           />
@@ -51,6 +62,16 @@ class Order extends Component {
           <Bill
             order={this.state.order}
           />
+        </div>
+        <div id="myModal" className="modal">
+          <div className="modalContent">
+            <span className="close" onClick={this.closeModal}>&times;</span>
+            <div className="innerModal">
+            <p>Are you sure you want to cancel this order?</p>
+            <p>This will cancel the entire order, not just yours!</p>
+            <div className="confirmButton" onClick={ this.deleteOrder }>Confirm</div>
+            </div>
+          </div>
         </div>
       </div>
     )

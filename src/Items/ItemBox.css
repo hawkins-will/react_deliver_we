@@ -4,6 +4,12 @@
 }
 
 .itemBoxLeft {
+  width: calc(100vw - 415px);
+  display: flex;
+  justify-content: center;
+}
+
+.leftPersonalMenu {
   width: 710px;
 }
 
@@ -36,12 +42,12 @@
 
 .itemBoxRight {
   position: fixed;
-  top: 60px;
-  right: 10px;
+  top: 75px;
+  right: 25px;
   border: 1px solid black;
   width: 350px;
   padding: 20px;
-  max-height: calc(100vh - 115px);
+  max-height: calc(100vh - 130px);
   overflow-y: scroll;
 }
 

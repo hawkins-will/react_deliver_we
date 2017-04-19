@@ -4,6 +4,15 @@
   justify-content: space-between;
 }
 
+.orderLeft{
+  width: calc(100vw - 415px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
 .orderTitle{
   font-size: 24px;
   margin-bottom: 20px;
@@ -18,4 +27,9 @@
 .cancelOrder:hover{
   cursor: pointer;
   color: purple;
+}
+
+.orderLogo{
+  height: 250px;
+  width: 250px;
 }

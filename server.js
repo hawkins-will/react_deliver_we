@@ -5,12 +5,14 @@ const mongoose = require('./db/connection.js');
 const bodyParser = require('body-parser');
 const Restaurant = require("./model/restaurants");
 const Order = require("./model/orders");
+const PastOrder = require("./model/pastOrders");
 // const PersonalOrder = require("./model/personalOrders");
 
 const app = express();
 const router = express.Router();
 
 const port = process.env.API_PORT || 3001;
+console.log(port);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -42,6 +44,7 @@ router.route("/restaurants")
     restaurant.deliveryFee = req.body.deliveryFee;
     restaurant.deliveryMin = req.body.deliveryMin;
     restaurant.tax = req.body.tax;
+    restaurant.logo = req.body.logo;
     restaurant.save(function(err, restaurant) {
       if (err)
       res.send(err);
@@ -61,7 +64,7 @@ router.route("/restaurants/:restaurant_id")
     Restaurant.findById(req.params.restaurant_id, function(err, restaurant) {
       if (err)
       res.send(err);
-      (req.body.name) ? restaurant.name = req.body.name : null;
+      (req.body.logo) ? restaurant.logo = req.body.logo : null;
       (req.body.menuItems) ? restaurant.menuItems = req.body.menuItems : null;
       restaurant.save(function(err) {
         if (err)
@@ -93,6 +96,8 @@ router.route("/restaurants/:restaurant_id")
       order.deliveryFee = req.body.deliveryFee;
       order.deliveryMin = req.body.deliveryMin;
       order.tax = req.body.tax;
+      order.logo = req.body.logo;
+      order.time = req.body.time;
       order.save(function(err, order) {
         if (err)
         res.send(err);
@@ -101,6 +106,13 @@ router.route("/restaurants/:restaurant_id")
     });
 
   router.route("/orders/:order_id")
+    .get(function(req, res) {
+      Order.findById(req.params.order_id, function(err, order) {
+        if (err)
+        res.send(err);
+        res.json(order)
+      });
+    })
     .put(function(req, res) {
       Order.findById(req.params.order_id, function(err, order) {
         if (err)
@@ -121,6 +133,24 @@ router.route("/restaurants/:restaurant_id")
         res.json({ message: "Order has been deleted" })
       })
     })
+
+  router.route("/past_orders")
+    .get(function(req, res) {
+      PastOrder.find(function(err, orders) {
+        if (err)
+        res.send(err);
+        res.json(orders)
+      });
+    })
+    .post(function(req, res) {
+      var order = new PastOrder();
+      order.order = req.body.order;
+      order.save(function(err, order) {
+        if (err)
+        res.send(err);
+        res.json(order);
+      });
+    });
 
 app.use("/api", router);
 

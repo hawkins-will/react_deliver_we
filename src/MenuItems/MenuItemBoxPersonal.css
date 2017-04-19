@@ -44,3 +44,8 @@
 .personalMenuDescription {
   font-size: 12px;
 }
+
+.modalMenuItem{
+  font-weight: bold;
+  font-size: 20px;
+}

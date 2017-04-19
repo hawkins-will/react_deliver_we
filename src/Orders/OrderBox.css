@@ -1,14 +1,36 @@
+.orderBoxHeader{
+  height: 100px;
+  background: rgba(0,0,0,.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+
 .orderDiv {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   height: 100px;
-  padding: 10px;
+  padding: 10px 50px;
   border-bottom: 2px solid grey;
+}
+
+.orderBoxLogo {
+  height: 100px;
+  width: 100px;
+}
+
+.orderInfoName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .orderDiv a {
   width: 300px;
+  margin-left: 50px;
+  font-size: 18px;
 }
 
 .orderInfoContainer {
@@ -24,4 +46,34 @@
 .orderInfoTitle {
   padding-bottom: 10px;
   color: grey;
+}
+
+.noOrders{
+  width: 100vw;
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.noOrders a {
+  text-decoration: none;
+}
+
+.noOrders div{
+  height: 50px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+  margin-top: 20px;
+  background-color: rgba(120, 211,	249, 1);
+}
+
+.noOrders div:hover {
+  background-color: rgba(90, 160,	186, 1);
 }

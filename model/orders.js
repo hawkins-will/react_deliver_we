@@ -15,11 +15,13 @@ var PersonalOrderSchema = new Schema({
 });
 
 var OrderSchema = new Schema({
+  time: String,
   restaurant: String,
   restaurantId: String,
   deliveryFee: Number,
   deliveryMin: Number,
   tax: Number,
+  logo: String,
   personalOrders: [PersonalOrderSchema]
 });
 

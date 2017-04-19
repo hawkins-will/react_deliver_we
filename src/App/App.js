@@ -13,6 +13,7 @@ import PersonalOrder from "../PersonalOrders/PersonalOrder"
 import MenuItem from "../MenuItems/MenuItem"
 import Item from "../Items/Item"
 import "./App.css"
+import "./Modal.css"
 
 class App extends Component {
   constructor(props){

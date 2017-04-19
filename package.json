@@ -9,16 +9,18 @@
     "foreman": "^2.0.0",
     "marked": "^0.3.6",
     "mongoose": "^4.9.2",
+    "node-schedule": "^1.2.1",
     "nodemon": "^1.11.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-router-dom": "^4.0.0"
+    "react-router-dom": "^4.0.0",
+    "react-scripts": "0.9.5"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env NODE_ENV=production MONGO_URL=mongodb://heroku_bspfb4xt:8m3n67lp508v8ssqdq7pl8juge@ds163010.mlab.com:63010/heroku_bspfb4xt node index.js",
     "start-dev": "nf start -p 3000",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

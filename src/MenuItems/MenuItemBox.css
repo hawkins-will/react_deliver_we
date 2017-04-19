@@ -1,3 +1,10 @@
+.menuItemBox{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .menuItemBox h2 {
   font-size: 32px;
   text-decoration: underline;
@@ -8,7 +15,8 @@
 
 .menuItemDiv {
   width: 340px;
-  margin-right: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
   margin-bottom: 10px;
   box-sizing: border-box;
   padding: 5px;
@@ -31,6 +39,7 @@
 .menu {
   display: flex;
   flex-wrap: wrap;
+  width: 1400px;
 }
 
 .menuItemHeader {

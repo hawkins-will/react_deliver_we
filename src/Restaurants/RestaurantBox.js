@@ -36,32 +36,33 @@ class RestaurantBox extends Component {
       let pathname = `/restaurant/${restaurant.name}`
       return(
         <div className="restaurantDiv" key={index}>
-          <Link to={{
-            pathname,
-            state: {active: restaurant },
-            props: {handleOrderAdded: () => this.handleOrderAdded()}
-          }}>
-            <p>{restaurant.name}</p>
-          </Link>
-          <div className="restaurantInfoContainer">
-            <img />
-            <div className="restaurantInfo">
-              <p className="restaurantInfoTitle">Delivery Fee</p>
-              <p>${restaurant.deliveryFee.toFixed(2)}</p>
-            </div>
-            <div className="restaurantInfo">
-              <p className="restaurantInfoTitle">Minimum</p>
-              <p>${restaurant.deliveryMin.toFixed(2)}</p>
-            </div>
+          <div className="restaurantInfoName">
+            <img className="restaurantBoxLogo" src={restaurant.logo} alt={restaurant.name}/>
+            <Link to={{
+              pathname,
+              state: {active: restaurant },
+              props: {handleOrderAdded: () => this.handleOrderAdded()}
+            }}>
+              <p>{restaurant.name}</p>
+            </Link>
+          </div>
+          <div className="restaurantInfo">
+            <p className="restaurantInfoTitle">Delivery Fee</p>
+            <p>${restaurant.deliveryFee.toFixed(2)}</p>
+          </div>
+          <div className="restaurantInfo">
+            <p className="restaurantInfoTitle">Minimum</p>
+            <p>${restaurant.deliveryMin.toFixed(2)}</p>
           </div>
         </div>
       )
     })
     return(
       <div>
-        <div>
-          {restaurants}
+        <div className="restaurantBoxHeader">
+          <p>Select One of the Available Restaurants Below</p>
         </div>
+        {restaurants}
       </div>
     )
   }
