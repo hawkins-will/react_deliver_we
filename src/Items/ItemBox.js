@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios"
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import MenuItemBoxPersonal from "../MenuItems/MenuItemBoxPersonal";
 import "./ItemBox.css"
 
@@ -43,7 +43,6 @@ class ItemBox extends Component {
     let personalFee = this.props.order.deliveryFee/this.props.order.personalOrders.length
     personalTotal = personalFee
     let items = this.props.personalOrder.items.map( (item, index) => {
-      let pathname = `/item/${item.name}`
       personalTotal = personalTotal + item.price
         return(
           <div>

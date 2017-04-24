@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios"
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import "./MenuItemBox.css"
 
 class MenuItemBox extends Component {
@@ -24,15 +24,13 @@ class MenuItemBox extends Component {
   }
 
   render() {
-    let restaurant = this.state.restaurant;
     let menuItems = this.state.restaurant.menuItems.map( (menuItem, index) => {
-      let pathname = `/menu_item/${menuItem.name}`
-        return(
-          <div className="menuItemDiv" key={index}>
-            <p className="menuItemHeader"><span>{menuItem.name}</span> ${menuItem.price.toFixed(2)}</p>
-            <p className="menuDescription">{menuItem.description}</p>
-          </div>
-        )
+      return(
+        <div className="menuItemDiv" key={index}>
+          <p className="menuItemHeader"><span>{menuItem.name}</span> ${menuItem.price.toFixed(2)}</p>
+          <p className="menuDescription">{menuItem.description}</p>
+        </div>
+      )
     })
     return(
       <div className="menuItemBox">

@@ -77,7 +77,7 @@ class App extends Component {
             render={() =>
               <div className="homePage">
               <div className="mainPhotoContainer">
-                <img className="mainPhoto" src={"berries.jpg"} alt="Food Image" />
+                <img className="mainPhoto" src={"berries.jpg"} alt="Food" />
               </div>
 
               <div className="mainLinks">

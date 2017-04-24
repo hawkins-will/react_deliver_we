@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import marked from "marked";
-import axios from "axios";
+// import axios from "axios";
 import OrderForm from "../Orders/OrderForm"
 import MenuItemBox from "../MenuItems/MenuItemBox"
 import "./Restaurant.css"

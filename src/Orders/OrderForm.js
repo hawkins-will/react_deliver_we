@@ -73,7 +73,7 @@ class OrderForm extends Component {
       let restaurant = this.state.restaurant
       let orderId = this.state.data.data._id
       let order = {}
-      var action = schedule.scheduleJob(newDate, function(){
+      schedule.scheduleJob(newDate, function(){
         console.log("Hi There!");
         axios.get("http://localhost:3001/api/orders/" + orderId).then( res => {
           order = res.data

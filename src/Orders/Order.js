@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import marked from "marked";
 import axios from "axios";
-import {
-  BrowserRouter as Router,
-  Redirect
-} from "react-router-dom"
+// import {
+//   BrowserRouter as Router,
+//   Redirect
+// } from "react-router-dom"
 import PersonalOrderBox from "../PersonalOrders/PersonalOrderBox"
 import Bill from "../Bills/Bill"
 import "./Order.css"
