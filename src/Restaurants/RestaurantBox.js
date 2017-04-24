@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios"
 import { Link } from "react-router-dom"
 import "./RestaurantBox.css"
-import RestaurantForm from "./RestaurantForm"
 
 class RestaurantBox extends Component {
   constructor(props) {
@@ -64,9 +63,6 @@ class RestaurantBox extends Component {
           <p>Select One of the Available Restaurants Below</p>
         </div>
         {restaurants}
-        <RestaurantForm
-          handleNewRestaurant={(e) => this.handleNewRestaurant(e)}
-        />
       </div>
     )
   }
