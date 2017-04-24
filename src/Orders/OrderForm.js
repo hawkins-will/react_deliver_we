@@ -11,7 +11,7 @@ class OrderForm extends Component {
     this.state = {
       restaurant: this.props.restaurant,
       restaurantName: this.props.restaurant.name,
-      restaurantId: this.props.restaurant._id,
+      restaurantId: this.props.restaurant._id.$oid,
       deliveryFee: this.props.restaurant.deliveryFee,
       deliveryMin: this.props.restaurant.deliveryMin,
       tax: this.props.restaurant.tax,
@@ -64,18 +64,19 @@ class OrderForm extends Component {
       time = hour + ":" + minute + " am"
     }
 
-    axios.post("https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa", { restaurant: restaurantName, restaurantId, deliveryFee, deliveryMin, tax, time, logo }).then( res => {
+    axios.post("https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa", { restaurant: restaurantName, restaurantId, deliveryFee, deliveryMin, tax, time, logo, personalOrders: [] }).then( res => {
       this.setState( {data: res });
     })
     .catch(err => {
       console.log(err)
     }).then(() => {
       let restaurant = this.state.restaurant
-      let orderId = this.state.data.data._id
+      let orderId = this.state.data.data._id.$oid
+      console.log(orderId);
       let order = {}
       schedule.scheduleJob(newDate, function(){
         console.log("Hi There!");
-        axios.get("https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa" + orderId).then( res => {
+        axios.get(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/restaurants/${orderId}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`).then( res => {
           order = res.data
         }).then (() => {
           axios.post("https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/past_orders?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa", { order })

@@ -27,7 +27,7 @@ class Order extends Component {
 
   deleteOrder(e) {
     let restaurant = this.state.restaurant
-    axios.delete(`http://localhost:3001/api/orders/${this.state.order._id}`, { restaurant: restaurant }).then( res => {
+    axios.delete(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders/${this.state.order._id.$oid}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`, { restaurant: restaurant }).then( res => {
     })
     .catch(err => {
       console.error(err);

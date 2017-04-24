@@ -11,14 +11,22 @@ class PersonalOrderBox extends Component {
     let personalOrders = order.personalOrders
     this.state = {
       personalOrders: personalOrders,
-      order: order
+      order: order,
      }
   }
 
   handleNewPersonalOrder(newPersonalOrders){
     let order = this.state.order
-    axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newPersonalOrders }).then( res => {
+    let restaurant = this.state.order.restaurant;
+    let restaurantId = this.state.order.restaurantId;
+    let deliveryFee = this.state.order.deliveryFee;
+    let deliveryMin = this.state.order.deliveryMin;
+    let tax = this.state.order.tax;
+    let time = this.state.order.time;
+    let logo = this.state.order.logo;
+    axios.put(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders/${order._id.$oid}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`, { restaurant, restaurantId, deliveryFee, deliveryMin, tax, time, logo, personalOrders: newPersonalOrders }).then( res => {
       this.setState( {personalOrders: newPersonalOrders });
+      console.log(newPersonalOrders);
     })
     .catch(err => {
       console.log(err)

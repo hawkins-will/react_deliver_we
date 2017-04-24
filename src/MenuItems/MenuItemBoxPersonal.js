@@ -9,11 +9,20 @@ class MenuItemBoxPersonal extends Component {
     let restaurant = this.props.restaurant;
     let order = this.props.order;
     let personalOrder = this.props.personalOrder;
+    let tempArray = []
+    this.props.personalOrder.items.forEach(function(item) {
+      tempArray.push(item.id);
+    })
+    tempArray = tempArray.sort();
+    let temporaryId = 0
+    if (tempArray.length > 0) {
+      temporaryId = tempArray[tempArray.length - 1] + 1;
+    }
     this.state = {
       restaurant: restaurant,
       order: order,
       personalOrder: personalOrder,
-      temporaryId: 0
+      temporaryId: temporaryId
     }
   }
 
@@ -44,14 +53,15 @@ class MenuItemBoxPersonal extends Component {
               <div className="confirmButton" onClick={ () => {
                 let order = this.props.order;
                 let personalOrder = this.props.personalOrder;
-                let personalId = this.props.personalOrder._id;
+                let personalId = this.props.personalOrder.id;
                 let newArray = order.personalOrders.filter((personalOrder) => {
-                  return personalOrder._id !== personalId
+                  return personalOrder.id !== personalId
                 })
+                console.log(personalId);
                 let name = menuItem.name
                 let price = menuItem.price
                 let description = menuItem.description
-                personalOrder.items.push( {name: name, price: price, description: description, id: temporaryId})
+                personalOrder.items.push( {name: name, price: price, description: description, id: temporaryId })
                 temporaryId = temporaryId + 1
                 this.setState({ temporaryId })
                 console.log(this.state.temporaryId);

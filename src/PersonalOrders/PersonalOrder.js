@@ -23,7 +23,7 @@ class PersonalOrder extends Component {
   }
 
   componentWillMount(){
-    axios.get("http://localhost:3001/api/restaurants/" + this.props.location.state.order.restaurantId).then((response) => {
+    axios.get(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/restaurants/${this.props.location.state.order.restaurantId}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`).then((response) => {
       this.setState({
         restaurant: response.data
       })
@@ -37,18 +37,25 @@ class PersonalOrder extends Component {
   updatePersonalOrder(e) {
     e.preventDefault();
     let order = this.state.order;
-    let personalId = this.state.personalOrder._id;
+    let restaurant = this.state.order.restaurant;
+    let restaurantId = this.state.order.restaurantId;
+    let deliveryFee = this.state.order.deliveryFee;
+    let deliveryMin = this.state.order.deliveryMin;
+    let tax = this.state.order.tax;
+    let time = this.state.order.time;
+    let logo = this.state.order.logo;
+    let personalId = this.state.personalOrder.id;
     let newArray = order.personalOrders.filter((personalOrder) => {
-      return personalOrder._id !== personalId
+      return personalOrder.id !== personalId
     })
     let selectedPersonalOrder = order.personalOrders.filter((personalOrder) => {
-      return personalOrder._id === personalId
+      return personalOrder.id === personalId
     })
     if (this.state.name){
       selectedPersonalOrder[0].name = this.state.name
     }
     newArray.unshift(selectedPersonalOrder[0])
-    axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newArray }).then( res => {
+    axios.put(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/restaurants/${order._id.$oid}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`, { restaurant, restaurantId, deliveryFee, deliveryMin, tax, time, logo, personalOrders: newArray }).then( res => {
       console.log("Personal Order Update");
     })
     .catch(err => {
@@ -58,11 +65,18 @@ class PersonalOrder extends Component {
 
   deletePersonalOrder(e) {
     let order = this.state.order;
-    let personalId = this.state.personalOrder._id;
+    let restaurant = this.state.order.restaurant;
+    let restaurantId = this.state.order.restaurantId;
+    let deliveryFee = this.state.order.deliveryFee;
+    let deliveryMin = this.state.order.deliveryMin;
+    let tax = this.state.order.tax;
+    let time = this.state.order.time;
+    let logo = this.state.order.logo;
+    let personalId = this.state.personalOrder.id;
     let newArray = order.personalOrders.filter((personalOrder) => {
-      return personalOrder._id !== personalId
+      return personalOrder.id !== personalId
     })
-    axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newArray }).then( res => {
+    axios.put(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders/${order._id.$oid}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`, { restaurant, restaurantId, deliveryFee, deliveryMin, tax, time, logo, personalOrders: newArray }).then( res => {
       console.log("Personal Order Deleted");
     })
     .catch(err => {

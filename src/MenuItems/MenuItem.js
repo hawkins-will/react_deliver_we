@@ -39,6 +39,11 @@ class MenuItem extends Component {
   updateMenuItem(e) {
     e.preventDefault();
     let restaurant = this.state.restaurant;
+    let name = this.state.restaurant.name.trim();
+    let deliveryFee = this.state.restaurant.deliveryFee;
+    let deliveryMin = this.state.restaurant.deliveryMin;
+    let tax = this.state.restaurant.tax;
+    let logo = this.state.restaurant.logo;
     let menuItemId = this.state.menuItem._id;
     let newArray = restaurant.menuItems.filter((menuItem) => {
       return menuItem._id !== menuItemId
@@ -55,8 +60,9 @@ class MenuItem extends Component {
     if (this.state.description){
       selectedMenuItem[0].description = this.state.description
     }
+
     newArray.unshift(selectedMenuItem[0])
-    axios.put(`http://localhost:3001/api/restaurants/${restaurant._id}`, { menuItems: newArray }).then( res => {
+    axios.put(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/restaurants/${this.state.restaurant._id.$oid}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`, { name, deliveryFee, deliveryMin, tax, logo, menuItems: newArray }).then( res => {
       console.log("Menu Item Updated");
     })
     .catch(err => {
@@ -70,7 +76,7 @@ class MenuItem extends Component {
     let newArray = restaurant.menuItems.filter((menuItem) => {
       return menuItem._id !== menuItemId
     })
-    axios.put(`http://localhost:3001/api/restaurants/${restaurant._id}`, { menuItems: newArray }).then( res => {
+    axios.put(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/restaurants/${this.state.restaurant._id.$oid}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`, { menuItems: newArray }).then( res => {
       console.log("Menu Item Deleted");
     })
     .catch(err => {

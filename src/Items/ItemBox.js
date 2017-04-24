@@ -20,7 +20,14 @@ class ItemBox extends Component {
 
   handleNewItem(newItems){
     let order = this.state.order
-    axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newItems }).then( res => {
+    let restaurant = this.state.order.restaurant;
+    let restaurantId = this.state.order.restaurantId;
+    let deliveryFee = this.state.order.deliveryFee;
+    let deliveryMin = this.state.order.deliveryMin;
+    let tax = this.state.order.tax;
+    let time = this.state.order.time;
+    let logo = this.state.order.logo;
+    axios.put(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders/${order._id.$oid}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`, { restaurant, restaurantId, deliveryFee, deliveryMin, tax, time, logo, personalOrders: newItems }).then( res => {
       this.setState( {items: newItems });
     })
     .catch(err => {
@@ -64,35 +71,42 @@ class ItemBox extends Component {
                 <p>Remove <span className="modalMenuItem">{item.name}</span> from your order?</p>
                 <div className="confirmButton" onClick={ () => {
                   let order = this.state.order;
+                  let restaurant = this.state.order.restaurant;
+                  let restaurantId = this.state.order.restaurantId;
+                  let deliveryFee = this.state.order.deliveryFee;
+                  let deliveryMin = this.state.order.deliveryMin;
+                  let tax = this.state.order.tax;
+                  let time = this.state.order.time;
+                  let logo = this.state.order.logo;
                   let personalOrder = this.state.personalOrder;
-                  let itemId = item._id;
+                  let itemId = item.id;
                   let newPersonalOrdersArray = []
                   let newArray = []
                   if (itemId) {
                     newArray = personalOrder.items.filter((personalOrderItem) => {
-                      return personalOrderItem._id !== itemId
+                      return personalOrderItem.id !== itemId
                     })
                     personalOrder.items = newArray;
-                    let personalId = personalOrder._id;
+                    let personalId = personalOrder.id;
                     newPersonalOrdersArray = order.personalOrders.filter((personalOrder) => {
-                      return personalOrder._id !== personalId
+                      return personalOrder.id !== personalId
                     })
                     newPersonalOrdersArray.push(personalOrder)
                   } else {
                     let itemId = item.id
                     newArray = personalOrder.items.filter((personalOrderItem) => {
-                      return personalOrderItem._id !== itemId && personalOrderItem.id !== itemId
+                      return personalOrderItem.id !== itemId
                     })
+                    console.log(newArray);
                     personalOrder.items = newArray;
-                    let personalId = personalOrder._id;
+                    let personalId = personalOrder.id;
                     newPersonalOrdersArray = order.personalOrders.filter((personalOrder) => {
-                      return personalOrder._id !== personalId
+                      return personalOrder.id !== personalId
                     })
                     newPersonalOrdersArray.push(personalOrder)
                   }
 
-
-                  axios.put(`http://localhost:3001/api/orders/${order._id}`, { personalOrders: newPersonalOrdersArray }).then( res => {
+                  axios.put(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders/${order._id.$oid}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`, { restaurant, restaurantId, deliveryFee, deliveryMin, tax, time, logo, personalOrders: newPersonalOrdersArray }).then( res => {
                     console.log("Item Deleted");
                   })
                   .catch(err => {
