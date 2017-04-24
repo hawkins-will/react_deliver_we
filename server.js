@@ -11,8 +11,8 @@ const PastOrder = require("./model/pastOrders");
 const app = express();
 const router = express.Router();
 
-const port = process.env.API_PORT || 3001;
-console.log(port);
+const port = mongoose.connect("mongodb://willhawkins123:scourge123@ds163340.mlab.com:63340/heroku_02sq48jf")
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -154,6 +154,6 @@ router.route("/restaurants/:restaurant_id")
 
 app.use("/api", router);
 
-app.listen(port, function() {
+app.listen(process.env.PORT || 3001, function() {
  console.log(`api running on port ${port}`);
 });

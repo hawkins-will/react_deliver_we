@@ -37,7 +37,7 @@ class OrderForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     let restaurantName = this.state.restaurantName.trim();
-    let restaurantId = this.state.restaurantId.trim();
+    let restaurantId = this.state.restaurantId;
     let deliveryFee = this.state.deliveryFee;
     let deliveryMin = this.state.deliveryMin;
     let logo = this.state.logo;
@@ -64,7 +64,7 @@ class OrderForm extends Component {
       time = hour + ":" + minute + " am"
     }
 
-    axios.post("http://localhost:3001/api/orders", { restaurant: restaurantName, restaurantId, deliveryFee, deliveryMin, tax, time, logo }).then( res => {
+    axios.post("https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa", { restaurant: restaurantName, restaurantId, deliveryFee, deliveryMin, tax, time, logo }).then( res => {
       this.setState( {data: res });
     })
     .catch(err => {
@@ -75,14 +75,14 @@ class OrderForm extends Component {
       let order = {}
       schedule.scheduleJob(newDate, function(){
         console.log("Hi There!");
-        axios.get("http://localhost:3001/api/orders/" + orderId).then( res => {
+        axios.get("https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa" + orderId).then( res => {
           order = res.data
         }).then (() => {
-          axios.post("http://localhost:3001/api/past_orders", { order })
+          axios.post("https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/past_orders?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa", { order })
           .catch(err => {
             console.log(err)
           }).then(() => {
-            axios.delete(`http://localhost:3001/api/orders/${order._id}`, { restaurant }).then( res => {
+            axios.delete(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders/${order._id}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`, { restaurant }).then( res => {
             })
             .catch(err => {
               console.error(err);

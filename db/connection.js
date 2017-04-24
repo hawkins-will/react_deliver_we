@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 // mongoose.connect("mongodb://localhost/deliverWe")
-mongoose.connect("mongodb://heroku_bspfb4xt:8m3n67lp508v8ssqdq7pl8juge@ds163010.mlab.com:63010/heroku_bspfb4xt")
+mongoose.connect("mongodb://willhawkins123:scourge123@ds163340.mlab.com:63340/heroku_02sq48jf")
 
 const db = mongoose.connection
 

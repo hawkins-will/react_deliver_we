@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios"
 import { Link } from "react-router-dom"
 import "./RestaurantBox.css"
+import RestaurantForm from "./RestaurantForm"
 
 class RestaurantBox extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class RestaurantBox extends Component {
     this.state = { restaurants: [] };
   }
   componentDidMount(){
-    axios.get("http://localhost:3001/api/restaurants").then((response) => {
+    axios.get("https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/restaurants?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa").then((response) => {
       this.setState({
         restaurants: response.data
       })
@@ -17,7 +18,7 @@ class RestaurantBox extends Component {
   }
 
   handleNewRestaurant(newRestaurant){
-    axios.post("http://localhost:3001/api/restaurants", newRestaurant).then( res => {
+    axios.post("https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/restaurants?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa", newRestaurant).then( res => {
       let restaurants = this.state.restaurants
       let newRestaurants = restaurants.concat([res.data])
       this.setState( {restaurants: newRestaurants });
@@ -63,6 +64,9 @@ class RestaurantBox extends Component {
           <p>Select One of the Available Restaurants Below</p>
         </div>
         {restaurants}
+        <RestaurantForm
+          handleNewRestaurant={(e) => this.handleNewRestaurant(e)}
+        />
       </div>
     )
   }
