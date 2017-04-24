@@ -49,7 +49,7 @@ class RestaurantForm extends Component {
     let deliveryMin = this.state.deliveryMin;
     let tax = this.state.tax;
     let logo = this.state.logo;
-    this.props.handleNewRestaurant({ name, deliveryFee, deliveryMin, tax, logo })
+    this.props.handleNewRestaurant({ name, deliveryFee, deliveryMin, tax, logo, menutItems: [] })
     this.setState({ name: undefined, deliveryFee: undefined, deliveryMin: undefined, tax: undefined, logo: undefined })
   }
 

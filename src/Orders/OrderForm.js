@@ -82,7 +82,7 @@ class OrderForm extends Component {
           .catch(err => {
             console.log(err)
           }).then(() => {
-            axios.delete(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders/${order._id}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`, { restaurant }).then( res => {
+            axios.delete(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders/${order._id.$oid}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`, { restaurant }).then( res => {
             })
             .catch(err => {
               console.error(err);
