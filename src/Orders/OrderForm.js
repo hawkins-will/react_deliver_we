@@ -73,15 +73,17 @@ class OrderForm extends Component {
       let restaurant = this.state.restaurant
       let orderId = this.state.data.data._id.$oid
       let order = {}
+      console.log(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders/${orderId}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`);
       schedule.scheduleJob(newDate, function(){
-        axios.get(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/restaurants/${orderId}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`).then( res => {
+        axios.get(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders/${orderId}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`).then( res => {
           order = res.data
+          console.log(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders/${orderId}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`);
         }).then (() => {
           axios.post("https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/past_orders?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa", { order })
           .catch(err => {
             console.log(err)
           }).then(() => {
-            axios.delete(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders/${order._id.$oid}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`, { restaurant }).then( res => {
+            axios.delete(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders/${orderId}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`, { restaurant }).then( res => {
             })
             .catch(err => {
               console.error(err);
