@@ -11,10 +11,8 @@ class PersonalOrderForm extends Component {
       tempArray.push(personalOrder.id);
     })
     tempArray = tempArray.sort();
-    console.log(tempArray);
     let temporaryId = 0
     if (tempArray.length > 0) {
-      console.log("hi");
       temporaryId = tempArray[tempArray.length - 1] + 1;
     }
     this.state = {
@@ -23,7 +21,6 @@ class PersonalOrderForm extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
-    console.log(this.state.temporaryId);
   }
 
   handleNameChange(e) {

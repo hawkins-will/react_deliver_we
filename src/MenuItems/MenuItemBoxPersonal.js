@@ -57,14 +57,12 @@ class MenuItemBoxPersonal extends Component {
                 let newArray = order.personalOrders.filter((personalOrder) => {
                   return personalOrder.id !== personalId
                 })
-                console.log(personalId);
                 let name = menuItem.name
                 let price = menuItem.price
                 let description = menuItem.description
                 personalOrder.items.push( {name: name, price: price, description: description, id: temporaryId })
                 temporaryId = temporaryId + 1
                 this.setState({ temporaryId })
-                console.log(this.state.temporaryId);
                 newArray.unshift(personalOrder);
                 this.props.handleNewItem(newArray)
                 this.closeModal(index)
