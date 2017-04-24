@@ -9,7 +9,7 @@ class OrderBox extends Component {
     this.state = { orders: [] };
   }
   componentDidMount(){
-    axios.get("http://localhost:3001/api/orders").then((response) => {
+    axios.get("https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa").then((response) => {
       this.setState({
         orders: response.data
       })
