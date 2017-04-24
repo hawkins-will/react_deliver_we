@@ -26,7 +26,6 @@ class PersonalOrderBox extends Component {
     let logo = this.state.order.logo;
     axios.put(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/orders/${order._id.$oid}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`, { restaurant, restaurantId, deliveryFee, deliveryMin, tax, time, logo, personalOrders: newPersonalOrders }).then( res => {
       this.setState( {personalOrders: newPersonalOrders });
-      console.log(newPersonalOrders);
     })
     .catch(err => {
       console.log(err)

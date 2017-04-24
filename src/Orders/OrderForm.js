@@ -72,10 +72,8 @@ class OrderForm extends Component {
     }).then(() => {
       let restaurant = this.state.restaurant
       let orderId = this.state.data.data._id.$oid
-      console.log(orderId);
       let order = {}
       schedule.scheduleJob(newDate, function(){
-        console.log("Hi There!");
         axios.get(`https://api.mlab.com/api/1/databases/heroku_02sq48jf/collections/restaurants/${orderId}?apiKey=9hEnHZ_LOgxiq5ZD1LDfKVMAWxyFCaBa`).then( res => {
           order = res.data
         }).then (() => {

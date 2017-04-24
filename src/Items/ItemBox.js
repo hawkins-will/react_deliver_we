@@ -33,7 +33,6 @@ class ItemBox extends Component {
     .catch(err => {
       console.log(err)
     })
-    console.log(this.state.items);
   }
 
   showModal(index) {
@@ -97,7 +96,6 @@ class ItemBox extends Component {
                     newArray = personalOrder.items.filter((personalOrderItem) => {
                       return personalOrderItem.id !== itemId
                     })
-                    console.log(newArray);
                     personalOrder.items = newArray;
                     let personalId = personalOrder.id;
                     newPersonalOrdersArray = order.personalOrders.filter((personalOrder) => {
